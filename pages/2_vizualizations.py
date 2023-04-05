@@ -26,7 +26,7 @@ df_price_columns = df_prices.columns
 # heading of our page
 st.markdown("""
 <h1 style="color: #333; font-family: 'Comic Sans MS', sans-serif; font-size: 35px; font-weight: bold; transition: color 0.1s ease-in-out;"
->My <span style="display: inline-block; transition: color 0.3s ease-in-out;"
+> <span style="display: inline-block; transition: color 0.3s ease-in-out;"
 >Know the Trends and Patterns in the Indian Agriculture Market!!</span> 📈</h1>
 """, unsafe_allow_html=True)
 with open("pages/static//vizcss.css") as h:

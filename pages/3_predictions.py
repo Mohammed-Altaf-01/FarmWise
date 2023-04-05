@@ -25,7 +25,7 @@ df_pred = pd.read_csv('pages/static/crop_recommendation.csv')
 columns = df_pred.columns[0:6]
 st.markdown("""
 <h1 style="color: #333; font-family: 'Comic Sans MS', sans-serif; font-size: 35px; font-weight: bold; transition: color 0.1s ease-in-out;"
->My <span style="display: inline-block; transition: color 0.3s ease-in-out;"
+><span style="display: inline-block; transition: color 0.3s ease-in-out;"
 >Know What To Grow</span>🌾</h1>
 """, unsafe_allow_html=True)
 with open("pages/static//vizcss.css") as h:

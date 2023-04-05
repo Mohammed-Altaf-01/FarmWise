@@ -7,7 +7,7 @@ from util import ChatGPT_conversation
 import time
 
 
-with open('pages\static\custom_homepage.css') as pgdesign:
+with open('static\custom_homepage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 hide_default_format = """
        <style>

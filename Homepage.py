@@ -8,7 +8,7 @@ with open('mainpage.css') as pgdesign:
 
 st.title('FarmWise')
 st.caption('A Bright Way To Grow Wise Crops')
-st.image("images\Farmer-bro.png", width=300)
+st.image("images/Farmer-bro.png", width=300)
 st.caption("We Live By Nature and We Preserve Nature")
 
 
@@ -37,7 +37,7 @@ with parts[0]:
     # question 2
     q3, q4 = st.columns(2)
     with q3:
-        st.image("images\Q1.png", width=250)
+        st.image("images/Q1.png", width=250)
     with q4:
         st.markdown(
             "**Wanna Know What The Future Of Your Crops Would Be?**")

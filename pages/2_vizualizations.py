@@ -5,7 +5,7 @@ import numpy as np
 import plotly.graph_objects as go
 st.set_page_config(layout="wide")
 
-with open('static\custom_homepage.css') as pgdesign:
+with open('static/custom_homepage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 hide_default_format = """
        <style>
@@ -16,9 +16,9 @@ hide_default_format = """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
 # 3 datasets for graphs
-df_gdp = pd.read_csv('pages\datasets\GDP.csv')
-df_prices = pd.read_csv('pages\datasets\Prices.csv')
-df_yield = pd.read_csv('pages\datasets\\raw_districtwise_yield_data.csv')
+df_gdp = pd.read_csv('pages/datasets/GDP.csv')
+df_prices = pd.read_csv('pages/datasets/Prices.csv')
+df_yield = pd.read_csv('pages/datasets//raw_districtwise_yield_data.csv')
 df_gdp_columns = df_gdp.columns
 df_price_columns = df_prices.columns
 
@@ -29,7 +29,7 @@ st.markdown("""
 >My <span style="display: inline-block; transition: color 0.3s ease-in-out;"
 >Know the Trends and Patterns in the Indian Agriculture Market!!</span> 📈</h1>
 """, unsafe_allow_html=True)
-with open("pages\static\\vizcss.css") as h:
+with open("pages/static//vizcss.css") as h:
     st.markdown(f"<style> {h.read()}</style>", unsafe_allow_html=True)
 st.write('---')
 

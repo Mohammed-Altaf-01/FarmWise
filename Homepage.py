@@ -1,10 +1,8 @@
 import streamlit as st
 import streamlit_lottie as st_lottie
 from util import *
-from PIL import Image
 
-ig = Image.open('pages\images\Farmer-bro.png')
-st.set_page_config(page_icon=ig)
+
 with open('pages\static\mainpage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 

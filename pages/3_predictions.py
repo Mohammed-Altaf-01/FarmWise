@@ -7,7 +7,7 @@ from util import ChatGPT_conversation
 import time
 
 
-with open('static\custom_homepage.css') as pgdesign:
+with open('pages/static/custom_homepage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 hide_default_format = """
        <style>
@@ -18,16 +18,16 @@ hide_default_format = """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
 # getting the model and loading it
-prediction = pickle.load(open("pages\\static\\NavieBayes.pkl", "rb"))
+prediction = pickle.load(open("pages//static//NavieBayes.pkl", "rb"))
 # reading the csv file
-df_pred = pd.read_csv('pages\static\crop_recommendation.csv')
+df_pred = pd.read_csv('pages/static/crop_recommendation.csv')
 columns = df_pred.columns[0:6]
 st.markdown("""
 <h1 style="color: #333; font-family: 'Comic Sans MS', sans-serif; font-size: 35px; font-weight: bold; transition: color 0.1s ease-in-out;"
 >My <span style="display: inline-block; transition: color 0.3s ease-in-out;"
 >Know What To Grow</span>🌾</h1>
 """, unsafe_allow_html=True)
-with open("pages\static\\vizcss.css") as h:
+with open("pages/static//vizcss.css") as h:
     st.markdown(f"<style> {h.read()}</style>", unsafe_allow_html=True)
 st.markdown("***Make Sure To Enter The Ratio's Between The Values*** :smile: ")
 st.markdown("<a href=https://www.gardeningknowhow.com/garden-how-to/soil-fertilizers/fertilizer-numbers-npk.htm>Example</a>", unsafe_allow_html=True)

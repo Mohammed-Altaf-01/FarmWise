@@ -18,7 +18,7 @@ def lottie_load_json(filepath: str):
 
 
 def ChatGPT_conversation(conversation):
-    apikey = st.secrets("api_key")  # os.getenv("API_KEY")
+    apikey = st.secrets["api_key"]  # os.getenv("API_KEY")
     openai.api_key = apikey
     model = 'gpt-3.5-turbo'
     response = openai.ChatCompletion.create(

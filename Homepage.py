@@ -31,7 +31,7 @@ with parts[0]:
             'You can use the Graphs Section to Know the Growth of the farming.')
     with q2:
         welcome_bot = lottie_load_json(
-            'pages\lottie_json\hello_bot.json')
+            'pages/lottie_json/hello_bot.json')
         st_lottie.st_lottie(welcome_bot, quality='ultrahigh', width=250)
 
     # question 2
@@ -46,7 +46,7 @@ with parts[0]:
 
 
 st_lottie.st_lottie(lottie_load_json(
-    'pages\lottie_json\\boygirl.json'))
+    'pages/lottie_json//boygirl.json'))
 #        Welcome Tab Ends Here
 
 
@@ -60,24 +60,24 @@ with parts[1]:
 
     with co1:
         # crating and adding github logo
-        logo = lottie_load_json('pages\lottie_json\github.json')
+        logo = lottie_load_json('pages/lottie_json/github.json')
         st_lottie.st_lottie(
             logo, loop=True, quality="high", width=90
         )
         st.markdown('[Code!!](www.github.com)')
     with co2:
-        mail_logo = lottie_load_json('pages\lottie_json\gmail.json')
+        mail_logo = lottie_load_json('pages/lottie_json/gmail.json')
         st_lottie.st_lottie(mail_logo, loop=True, quality='high', width=90)
         mail_link = '<a href="mailto:20eg103319@anurag.edu.in">ClickHere</a>'
         st.markdown(mail_link, unsafe_allow_html=True)
 
     with co3:
-        twitter_logo = lottie_load_json("pages\lottie_json\\twitter.json")
+        twitter_logo = lottie_load_json("pages/lottie_json//twitter.json")
         st_lottie.st_lottie(twitter_logo, loop=True, quality='high', width=100)
         st.markdown('[Tweet!!](https://twitter.com/_MohammedAltaf)')
 
     with co4:
-        linkedln_logo = lottie_load_json('pages\lottie_json\linkedin.json')
+        linkedln_logo = lottie_load_json('pages/lottie_json/linkedin.json')
         st_lottie.st_lottie(linkedln_logo, loop=True, width=100)
         st.markdown(
             '[Post](https://www.linkedin.com/in/mohammed-altaf-850b56259/)')

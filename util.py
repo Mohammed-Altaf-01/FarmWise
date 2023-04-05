@@ -3,9 +3,9 @@ import openai
 import os
 import json
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()  # loading environment variables
+# load_dotenv()  # loading environment variables
 # hiding api keys for security in env variables
 
 

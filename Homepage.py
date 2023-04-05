@@ -3,7 +3,7 @@ import streamlit_lottie as st_lottie
 from util import *
 
 
-with open('pages\static\mainpage.css') as pgdesign:
+with open('mainpage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 
 st.title('FarmWise')

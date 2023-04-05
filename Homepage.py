@@ -6,6 +6,15 @@ from util import *
 with open('mainpage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 
+# hiding the side bar and appname at the bottom
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)
+
 st.title('FarmWise')
 st.caption('A Bright Way To Grow Wise Crops')
 st.image("images/Farmer-bro.png", width=300)

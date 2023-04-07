@@ -46,7 +46,7 @@ st.components.v1.html("""
     <script>
       var text = "Farmers are the backbone of our society "; // Replace with your own text
       var i = 0;
-      var speed = 40; // Adjust typing speed in milliseconds
+      var speed = 90; // Adjust typing speed in milliseconds
 
       function typeWriter() {
         if (i < text.length) {

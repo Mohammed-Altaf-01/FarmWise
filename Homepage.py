@@ -1,7 +1,82 @@
 import streamlit as st
 import streamlit_lottie as st_lottie
 from util import *
+st.set_page_config(
+    page_title="Homepage-FarmWise",
+    page_icon="💖",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
 
+st.markdown("""<html>
+<body><h1 class="glow"> Farm Wise </h1></body>
+</html>""", unsafe_allow_html=True)
+
+st.markdown("""
+<h2 style="color: #333; font-family: 'verdana', sans-serif; font-size: 30px; font-weight: bold; transition: color 0.1s ease-in-out;"
+> <span style="display: inline-block; transition: color 0.3s ease-in-out;"
+> A Bright Way To Grow Wise Crops </span> </h2>""", unsafe_allow_html=True)
+st.components.v1.html("""
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Typewriter Effect</title>
+    <style>
+      /* Add some basic styling */
+      #typewriter {
+        font-family: 'Courier New', monospace;
+        font-size: 24px;
+        text-align: center;
+	    font-weight: bold;
+        color: #8BC34A;
+	
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 1px solid black;
+        padding-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add an empty div to display the typewriter effect -->
+    <div id="typewriter"></div>
+
+    <!-- Add a script to create the typewriter effect -->
+    <script>
+      var text = "Farmers are the backbone of our society.They are the ones who toil day in and day out. "; // Replace with your own text
+      var i = 0;
+      var speed = 40; // Adjust typing speed in milliseconds
+
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("typewriter").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      // Call the typeWriter function when the page loads
+      window.onload = function() {
+        typeWriter();
+      };
+    </script>
+  </body>
+</html>
+""")
+st.markdown(
+    f'''
+        <style>
+            .sidebar .sidebar-content {{
+                width: 300px;
+            }}
+        </style>
+    ''',
+    unsafe_allow_html=True
+)
+st.image("images/Farmer-bro.png", width=300)
+st.caption("We Live By Nature and We Preserve Nature")
+# css styling applied to the page here :
 
 with open('mainpage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
@@ -15,10 +90,7 @@ hide_default_format = """
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
-st.title('FarmWise')
-st.caption('A Bright Way To Grow Wise Crops')
-st.image("images/Farmer-bro.png", width=300)
-st.caption("We Live By Nature and We Preserve Nature")
+# css styling part ends here
 
 
 # creating The tabs section for mainpage
@@ -53,7 +125,7 @@ with parts[0]:
         st.markdown(
             "Help You With Predictions Based On Your Soil's Health and It's Location")
 
-
+st.markdown('---')
 st_lottie.st_lottie(lottie_load_json(
     'pages/lottie_json//boygirl.json'))
 #        Welcome Tab Ends Here

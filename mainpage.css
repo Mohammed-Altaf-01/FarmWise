@@ -1,3 +1,33 @@
+h1 span:hover {
+    color: #8BC34A;
+  }
+h1{
+    text-align: center;
+  }
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px #00ff00;
+    }
+    to {
+        box-shadow: 0 0 20px #00ff00;
+    }
+}
+
+.glow {
+    animation: glow 1s ease-in-out infinite alternate;
+    padding: 0 0 20px;
+    background-color: #0a0a0a;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 80px;
+	font-weight: bold;
+}
+h2 span:hover {
+    color: #8BC34A;
+  }
+  h2{
+    text-align: center;
+  }
 .css-9s5bis.edgvbvh3
     {
     visibility:hidden;
@@ -5,7 +35,14 @@
     .css-h5rgaw.egzxvld1
     {
     visibility:hidden;
-    }
+     }
+     
+img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+}
+     
 [data-testid="stCaptionContainer"]{
 
     margin-top: 25px;
@@ -15,8 +52,7 @@
     text-align: center;
 }
 [data-testid="stAppViewContainer"]{
-    /* background-image: url("https://images.unsplash.com/photo-1530569673472-307dc017a82d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80"); */
-    /*filter: blur(20px);*/
+
     background-size:cover}
 [data-testid="stHeader"]{
 background-color: rgba(0,0,0,0);
@@ -43,8 +79,8 @@ div.css-rvekum.e16nr0p34{
 }
 
 #farmwise{text-align: center;}
-.css-10trblm.e16nr0p30{
-    position: absolute;
+/* .css-10trblm.e16nr0p30{ */
+    /* position: absolute;
     top: 50%; 
     right: 50%;
     transform: translate(50%,-50%);
@@ -67,7 +103,7 @@ div.css-rvekum.e16nr0p34{
     1px 22px 10px rgba(16,16,16,0.2),
     1px 25px 35px rgba(16,16,16,0.2),
     1px 30px 60px rgba(16,16,16,0.4);
-}
+} */
 
 .css-1v0mbdj.etr89bj1{
 
@@ -92,4 +128,4 @@ div.css-rvekum.e16nr0p34{
 #root{
 
     background-color: #A2DFF8;
-}
+} 

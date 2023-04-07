@@ -3,7 +3,8 @@ import pandas as pd
 import plotly.express as px
 import numpy as np
 import plotly.graph_objects as go
-st.set_page_config(layout="wide")
+st.set_page_config(
+    layout="wide", initial_sidebar_state="collapsed", page_icon="📽")
 
 with open('pages/static/custom_homepage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
@@ -36,15 +37,17 @@ st.write('---')
 
 # dividing and working with columns on our page
 col1, col2 = st.columns(2)
-with col1:
-    state = st.selectbox(label='***Select the Indian State*** 👇',
-                         options=df_gdp['State Name'].unique())
-    a = df_gdp['State Name'] == state
-    dist = df_gdp.loc[a, 'Dist Name']
-    dist = st.selectbox(label='***Select The District***',
-                        options=dist.unique())
-    sector = st.selectbox(label='***Select The Sector***',
-                          options=df_gdp_columns[5:],)
+with col2:
+    inner_col, val = st.columns(2)
+    with inner_col:
+        state = st.selectbox(label='***Select the Indian State*** 👇',
+                             options=df_gdp['State Name'].unique())
+        a = df_gdp['State Name'] == state
+        dist = df_gdp.loc[a, 'Dist Name']
+        dist = st.selectbox(label='***Select The District***',
+                            options=dist.unique())
+        sector = st.selectbox(label='***Select The Sector***',
+                              options=df_gdp_columns[5:],)
 
     # plotting the figure ..
     flush = df_gdp['Dist Name'] == dist
@@ -58,7 +61,7 @@ with col1:
     st.write(fig4)
 
 
-with col2:
+with col1:
     price_state = st.selectbox(label='***Select the Indian State*** 👇',
                                options=df_prices['State Name'].unique(), key='StatePrices')
     dist_price = df_prices['State Name'] == price_state

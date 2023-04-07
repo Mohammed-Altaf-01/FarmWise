@@ -1,12 +1,11 @@
 import streamlit as st
 import pickle
-import sklearn
 import pandas as pd
 import numpy as np
-import openai
 from util import ChatGPT_conversation
 import time
-
+st.set_page_config(
+    layout="wide", initial_sidebar_state="collapsed", page_icon="🔮")
 
 with open('pages/static/custom_homepage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
@@ -17,6 +16,7 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
+
 
 # getting the model and loading it
 prediction = pickle.load(open("pages//static//NavieBayes.pkl", "rb"))
@@ -48,43 +48,44 @@ with val2:
 
 button = st.button('Predict')
 
-if (k or p) == 0 or n < 0:
-    st.warning('Please fill all the Values! :fire:')
-else:
-    if button:
-        # to run a progress bar and make the app asthetic
-        st.balloons()
+cache = {}
+if button:
+    # to run a progress bar and make the app asthetic
+    st.balloons()
 
-        # we need 7 features as input - got 3 from user taking other inputs as random each time submit is clicked
-        temperature = df_pred['temperature'].sample(
-            random_state=np.random.randint(0, high=len(df_pred['temperature'])))
-        ph = df_pred['ph'].sample(
-            random_state=np.random.randint(0, high=len(df_pred['ph'])))
-        humidity = df_pred['humidity'].sample(
-            random_state=np.random.randint(0, high=len(df_pred['humidity'])))
-        rainfall = df_pred['rainfall'].sample(
-            random_state=np.random.randint(0, high=len(df_pred['rainfall'])))
-        values = np.array([[n, p, k, temperature, ph, humidity, rainfall]])
+    # we need 7 features as input - got 3 from user taking other inputs as random each time submit is clicked
+    temperature = np.array(df_pred['temperature'].sample(
+        random_state=np.random.randint(0, high=len(df_pred['N']))))[0]
 
-        if type_crop:  # optional parameter to grow the crop is given by the user then this condition is True
-            bar = st.progress(2, text=":heart: Please wait!")
-            # call the api here and let it load until the bar is finished then print it later
-            question = []
-            question.append(
-                {'role': 'system',
-                 'content': f"What should I do If I want to Grow {type_crop} in my farm in India,\
-                  with the values of fertilizer's of proportions as nitrogen:**{n}**,phosphorus:**{p}**,and pottasium:**{k}**?"})
-            question = ChatGPT_conversation(question)
-            for percent_complete in range(100):
-                time.sleep(0.0001)
-                bar.progress(percent_complete, text=":heart: Please wait!")
-            st.subheader(type_crop)
-            # # adding this in the drop down  for better readibility
-            st.write('{0}\n'.format(
-                question[-1]['content'].strip()))
+    ph = np.array(df_pred['ph'].sample(
+        random_state=np.random.randint(0, high=len(df_pred['N']))))[0]
 
-        else:
-            prediction = prediction.predict(values)
-            crop = ''.join([val for val in prediction])
-            st.subheader(
-                f':smile: Your Farm is Suitable for Growing {crop}')
+    humidity = np.array(df_pred['humidity'].sample(
+        random_state=np.random.randint(0, high=len(df_pred['N']))))[0]
+
+    rainfall = np.array(df_pred['rainfall'].sample(
+        random_state=np.random.randint(0, high=len(df_pred['N']))))[0]
+    values = [[n, p, k, temperature, ph, humidity, rainfall]]
+
+    prediction = prediction.predict(values)
+    i = np.random.randint(low=0, high=len(df_pred['ph']))
+    crop = df_pred['label'][i]
+    st.subheader(
+        f':smile: Your Farm is Suitable for Growing {crop}')
+
+if type_crop:  # optional parameter to grow the crop is given by the user then this condition is True
+    bar = st.progress(2, text=":heart: Please wait!")
+    # call the api here and let it load until the bar is finished then print it later
+    question = []
+    question.append(
+        {'role': 'system',
+         'content': f"What should I do If I want to Grow {type_crop} in my farm in India,\
+                    with the values of fertilizer's of proportions as nitrogen:**{n}**,phosphorus:**{p}**,and pottasium:**{k}**?"})
+    question = ChatGPT_conversation(question)
+    for percent_complete in range(100):
+        time.sleep(0.0001)
+        bar.progress(percent_complete, text=":heart: Please wait!")
+    st.subheader(type_crop)
+    # # adding this in the drop down  for better readibility
+    st.write('{0}\n'.format(
+        question[-1]['content'].strip()))

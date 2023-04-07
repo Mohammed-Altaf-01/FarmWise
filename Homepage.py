@@ -44,7 +44,7 @@ st.components.v1.html("""
 
     <!-- Add a script to create the typewriter effect -->
     <script>
-      var text = "Farmers are the backbone of our society.They are the ones who toil day in and day out. "; // Replace with your own text
+      var text = "Farmers are the backbone of our society "; // Replace with your own text
       var i = 0;
       var speed = 40; // Adjust typing speed in milliseconds
 

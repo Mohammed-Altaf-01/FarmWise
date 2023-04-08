@@ -135,7 +135,7 @@ if type_crop:  # optional parameter to grow the crop is given by the user then t
     question = []
     question.append(
         {'role': 'system',
-         'content': f"What should I do If I want to Grow {type_crop} in my farm in {state} in the {} district,\
+         'content': f"What should I do If I want to Grow {type_crop} in my farm in {state} in the {dist} district,\
                     with the values of fertilizer's of proportions as nitrogen:**{n}**,phosphorus:**{p}**,and pottasium:**{k}**?"})
     question = ChatGPT_conversation(question)
     for percent_complete in range(100):

@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import numpy as np
-from util import ChatGPT_conversation
+from util import Retreiving_Details
 import time
 st.set_page_config(
     layout="wide", initial_sidebar_state="collapsed", page_icon="🔮")
@@ -137,7 +137,7 @@ if type_crop:  # optional parameter to grow the crop is given by the user then t
         {'role': 'system',
          'content': f"What should I do If I want to Grow {type_crop} in my farm in {state} in the {dist} district,\
                     with the values of fertilizer's of proportions as nitrogen:**{n}**,phosphorus:**{p}**,and pottasium:**{k}**?"})
-    question = ChatGPT_conversation(question)
+    question = Retreiving_Details(question)
     for percent_complete in range(100):
         time.sleep(0.0001)
         bar.progress(percent_complete, text=":heart: Please wait!")

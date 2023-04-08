@@ -13,7 +13,8 @@ def lottie_load_json(filepath: str):
 
 # system assistant and user there will be 3 roles.
 
-def ChatGPT_conversation(conversation):
+@st.cahce_data
+def Retreiving_Details(conversation):
     apikey = st.secrets["api_key"]  # os.getenv("API_KEY")
     openai.api_key = apikey
     model = 'gpt-3.5-turbo'

@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit_lottie as st_lottie
+from streamlit_extras.switch_page_button import switch_page
 from util import *
 st.set_page_config(
     page_title="Homepage-FarmWise",
@@ -74,6 +75,7 @@ st.markdown(
     ''',
     unsafe_allow_html=True
 )
+
 st.image("images/Farmer-bro.png", width=300)
 st.caption("We Live By Nature and We Preserve Nature")
 # css styling applied to the page here :
@@ -87,7 +89,8 @@ hide_default_format = """
        #MainMenu {visibility: hidden; }
        footer {visibility: hidden;}
        </style>
-#        """
+
+       """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
 # css styling part ends here
@@ -103,29 +106,59 @@ parts = st.tabs(tabs=tabs)
 
 # section 1 and the question 1 part
 with parts[0]:
-    st.markdown(' ***Questions We Solve!***')
-    q1, q2 = st.columns(2)
+
+    q1, v1 = st.columns(2)
     with q1:
-        st.markdown(
-            ' **What are the Trends of Farming by Using Interactive Plots?**')
-        st.markdown(
-            'You can use the Graphs Section to Know the Growth of the farming.')
-    with q2:
+        st.markdown("<h3>Navigate Yourself Properly Using This Video Here 👉</h3>",
+                    unsafe_allow_html=True)
+
+        st.markdown('')
+        st.markdown("""<p> This is the main page which has two tabs in it. The first Tab provides a guide to the user for proper navigation throught the interface
+                    the second Tab has the details of the Developers who worked on creation of this WebPage. Scroll Down to more about the intresting stuff that is Waiting For YOU! 😊
+                        </p>""", unsafe_allow_html=True)
+
+        Loved_it = st.button("Click To Chill ❄ ")
+        if Loved_it:
+            st.snow()
+
         welcome_bot = lottie_load_json(
             'pages/lottie_json/hello_bot.json')
         st_lottie.st_lottie(welcome_bot, quality='ultrahigh', width=250)
+    with v1:
+        with open("homepage_vid/homepage.mp4", 'rb') as v:
+            st.video(v)
+    st.write('---')
 
-    # question 2
-    q3, q4 = st.columns(2)
-    with q3:
+    q2, v2 = st.columns(2)
+    with q2:
+        with open("homepage_vid//viz.mp4", 'rb') as v:
+            st.video(v)
+
+    with v2:
+        st.markdown("<h3>Know The Current Trends In the Market Using Interactive Graphs 💹</h3>",
+                    unsafe_allow_html=True)
+        st.markdown("")
+        st.markdown("""<p> The vizualization's page consist of line and bar graphs showing the growth and variation in the various sectors 
+        as well as it's evolution over the years. You can also know the particular crop growth in a state by selecting your prefered values 
+        The graphs are completely Interactive and you can zoom in and out on the go without any trouble.</p>""", unsafe_allow_html=True)
+        viz = st.button('Try Vizuals Out ')
+        if viz:
+            switch_page("vizualizations")
         st.image("images/Q1.png", width=250)
-    with q4:
-        st.markdown(
-            "**Wanna Know What The Future Of Your Crops Would Be?**")
-        st.markdown(
-            "Help You With Predictions Based On Your Soil's Health and It's Location")
 
-st.markdown('---')
+    st.markdown('---')
+    q3, v3 = st.columns(2)
+    with q3:
+        st.markdown("<h3>Know What Crops You should Prefer Growing Based On Soil Nutrients!🌱</h3>",
+                    unsafe_allow_html=True)
+        st.markdown("""<p> Based On your current location and your state you can know what type of crop is most suitable for your area, and if by chance 
+        you wanna grow any other crop, simple name it and know what changes migh require to grow it in your filed without any effort🙅‍♂️</p>""", unsafe_allow_html=True)
+        pr = st.button('GO Predict Without Trouble')
+        if pr:
+            switch_page('predictions')
+    with v3:
+        with open("homepage_vid/pred.mp4", 'rb') as v:
+            st.video(v)
 st_lottie.st_lottie(lottie_load_json(
     'pages/lottie_json//boygirl.json'))
 #        Welcome Tab Ends Here

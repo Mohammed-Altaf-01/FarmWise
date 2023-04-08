@@ -3,6 +3,7 @@ h1 span:hover {
   }
 h1{
     text-align: center;
+    padding: 0;
   }
 @keyframes glow {
     from {
@@ -28,6 +29,14 @@ h2 span:hover {
   h2{
     text-align: center;
   }
+h3{
+    font-family: 'verdana',sans-serif;
+    font-size: 28px;
+}
+h3 span:hover {
+    color: #8BC34A;
+    transition: 0.1s;
+}
 .css-9s5bis.edgvbvh3
     {
     visibility:hidden;
@@ -42,7 +51,23 @@ img {
         margin-left: auto;
         margin-right: auto;
 }
-     
+video{
+ 
+       align-items: right;
+       width: 600px;
+        height: 400px;
+        border-radius: 20px;
+        inset: -5px; /* control the spread */
+     transform: translate(10px, 8px); /* control the offsets */
+     z-index: -1; /* place the element behind */
+
+     filter: blur(0.5px); 
+     box-shadow: 0 8px 6px -6px rgb(218, 206, 206); 
+}
+p{
+
+    text-align: center;
+}
 [data-testid="stCaptionContainer"]{
 
     margin-top: 25px;

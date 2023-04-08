@@ -30,7 +30,56 @@ st.markdown("""
 """, unsafe_allow_html=True)
 with open("pages/static//vizcss.css") as h:
     st.markdown(f"<style> {h.read()}</style>", unsafe_allow_html=True)
-st.markdown("***Make Sure To Enter The Ratio's Between The Values*** :smile: ")
+# heading of our page
+st.components.v1.html("""
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Typewriter Effect</title>
+    <style>
+      /* Add some basic styling */
+      #typewriter {
+        font-family: 'Courier New', monospace;
+        font-size: 24px;
+        text-align: center;
+	    font-weight: bold;
+        color: #8BC34A;
+	
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 1px solid black;
+        padding:0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add an empty div to display the typewriter effect -->
+    <div id="typewriter"></div>
+
+    <!-- Add a script to create the typewriter effect -->
+    <script>
+      var text = "Make Sure to Enter the Values in Ratio's of Each Other! "; // Replace with your own text
+      var i = 0;
+      var speed = 90; // Adjust typing speed in milliseconds
+
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("typewriter").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      // Call the typeWriter function when the page loads
+      window.onload = function() {
+        typeWriter();
+      };
+    </script>
+  </body>
+</html>
+""")
+
 st.markdown("<a href=https://www.gardeningknowhow.com/garden-how-to/soil-fertilizers/fertilizer-numbers-npk.htm>Example</a>", unsafe_allow_html=True)
 
 val1, val2 = st.columns(2)

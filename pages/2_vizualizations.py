@@ -14,15 +14,6 @@ hide_default_format = """
        footer {visibility: hidden;}
        </style>
        """
-st.markdown(hide_default_format, unsafe_allow_html=True)
-
-# 3 datasets for graphs
-df_gdp = pd.read_csv('pages/datasets/GDP.csv')
-df_prices = pd.read_csv('pages/datasets/Prices.csv')
-df_yield = pd.read_csv('pages/datasets//raw_districtwise_yield_data.csv')
-df_gdp_columns = df_gdp.columns
-df_price_columns = df_prices.columns
-
 
 # heading of our page
 st.markdown("""
@@ -32,9 +23,67 @@ st.markdown("""
 """, unsafe_allow_html=True)
 with open("pages/static//vizcss.css") as h:
     st.markdown(f"<style> {h.read()}</style>", unsafe_allow_html=True)
+st.markdown(hide_default_format, unsafe_allow_html=True)
+
+st.components.v1.html("""
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Typewriter Effect</title>
+    <style>
+      /* Add some basic styling */
+      #typewriter {
+        font-family: 'Courier New', monospace;
+        font-size: 24px;
+        text-align: center;
+	    font-weight: bold;
+        color: #8BC34A;
+	
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 1px solid black;
+        padding:0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add an empty div to display the typewriter effect -->
+    <div id="typewriter"></div>
+
+    <!-- Add a script to create the typewriter effect -->
+    <script>
+      var text = "Select Corresponding State's and There District's "; // Replace with your own text
+      var i = 0;
+      var speed = 90; // Adjust typing speed in milliseconds
+
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("typewriter").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      // Call the typeWriter function when the page loads
+      window.onload = function() {
+        typeWriter();
+      };
+    </script>
+  </body>
+</html>
+""")
+
+
+# 3 datasets for graphs
+df_gdp = pd.read_csv('pages/datasets/GDP.csv')
+df_prices = pd.read_csv('pages/datasets/Prices.csv')
+df_yield = pd.read_csv('pages/datasets//raw_districtwise_yield_data.csv')
+df_gdp_columns = df_gdp.columns
+df_price_columns = df_prices.columns
+
+
 st.write('---')
-
-
 # dividing and working with columns on our page
 col1, col2 = st.columns(2)
 with col2:

@@ -19,6 +19,7 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 
 
 # getting the model and loading it
+df_gdp = pd.read_csv('pages/datasets/GDP.csv')
 prediction = pickle.load(open("pages//static//NavieBayes.pkl", "rb"))
 # reading the csv file
 df_pred = pd.read_csv('pages/static/crop_recommendation.csv')
@@ -84,12 +85,18 @@ st.markdown("<a href=https://www.gardeningknowhow.com/garden-how-to/soil-fertili
 
 val1, val2 = st.columns(2)
 with val1:
+    state = st.selectbox(label='***Select the Indian State*** ',
+                         options=df_gdp['State Name'].unique())
     n = st.number_input(
         "**Nitrogen**", min_value=df_pred['N'].min(), max_value=df_pred['N'].max())
     k = st.number_input('**Potassium**',
                         min_value=df_pred['K'].min(), max_value=df_pred['K'].max())
 
 with val2:
+    a = df_gdp['State Name'] == state
+    dist = df_gdp.loc[a, 'Dist Name']
+    dist = st.selectbox(label='***Select The District***',
+                        options=dist.unique())
     p = st.number_input('**Phosphorus**', min_value=df_pred['P'].min(),
                         max_value=df_pred['P'].max())
     type_crop = st.text_input('**Crop You Want To Grow**',
@@ -97,7 +104,7 @@ with val2:
 
 button = st.button('Predict')
 
-cache = {}
+
 if button:
     # to run a progress bar and make the app asthetic
     st.balloons()
@@ -128,7 +135,7 @@ if type_crop:  # optional parameter to grow the crop is given by the user then t
     question = []
     question.append(
         {'role': 'system',
-         'content': f"What should I do If I want to Grow {type_crop} in my farm in India,\
+         'content': f"What should I do If I want to Grow {type_crop} in my farm in {state} in the {} district,\
                     with the values of fertilizer's of proportions as nitrogen:**{n}**,phosphorus:**{p}**,and pottasium:**{k}**?"})
     question = ChatGPT_conversation(question)
     for percent_complete in range(100):

@@ -123,23 +123,22 @@ if image != None:  # another condition for pic
                 st.write(
                     f'Your crop might have a disease {lst[-3]} {lst[-2]} {lst[-1]}')
                 val = f"disease {lst[-3]} {lst[-2]} {lst[-1]}"
-            button = st.button('How to get rid of this Disease')
-            if button:
-                bar = st.progress(
-                    2, text=":heart: Please wait! **We Appreciate Your Patience**")
-                question = []
-                question.append(
-                    {'role': 'system',
-                     'content': f"what should be done to get rid of leaf {val}"})
-                question = Retreiving_Details(question)
 
-                for percent_complete in range(100):
-                    time.sleep(0.001)
-                    bar.progress(percent_complete, text=":heart: Please wait!")
-                st.subheader(val)
-                # # adding this in the drop down  for better readibility
-                st.write('{0}\n'.format(
-                    question[-1]['content'].strip()))
+            bar = st.progress(
+                2, text=":heart: Please wait! **We Appreciate Your Patience**")
+            question = []
+            question.append(
+                {'role': 'system',
+                 'content': f"what should be done to get rid of leaf {val}"})
+            question = Retreiving_Details(question)
+
+            for percent_complete in range(100):
+                time.sleep(0.001)
+                bar.progress(percent_complete, text=":heart: Please wait!")
+            st.subheader(val)
+            # # adding this in the drop down  for better readibility
+            st.write('{0}\n'.format(
+                question[-1]['content'].strip()))
 
 
 # train another model to predict leaf or note using existing data

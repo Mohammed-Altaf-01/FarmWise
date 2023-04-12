@@ -126,19 +126,19 @@ if image != None:  # another condition for pic
             bar = st.progress(
                 2, text=":heart: Please wait! **We Appreciate Your Patience**")
     # call the api here and let it load until the bar is finished then print it later
-        for percent_complete in range(100):
-            time.sleep(0.01)
-            bar.progress(percent_complete, text=":heart: Please wait!")
-        question = []
-        question.append(
-            {'role': 'system',
-             'content': f"what should be done to get rid of leaf {val}"})
-        question = Retreiving_Details(question)
+            for percent_complete in range(100):
+                time.sleep(0.001)
+                bar.progress(percent_complete, text=":heart: Please wait!")
+            question = []
+            question.append(
+                {'role': 'system',
+                 'content': f"what should be done to get rid of leaf {val}"})
+            question = Retreiving_Details(question)
 
-        st.subheader(val)
-        # # adding this in the drop down  for better readibility
-        st.write('{0}\n'.format(
-            question[-1]['content'].strip()))
+            st.subheader(val)
+            # # adding this in the drop down  for better readibility
+            st.write('{0}\n'.format(
+                question[-1]['content'].strip()))
 
 
 # train another model to predict leaf or note using existing data

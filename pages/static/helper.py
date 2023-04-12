@@ -1,7 +1,7 @@
 import streamlit as st
 import tensorflow as tf
 from PIL import ImageOps, Image
-from matplotlib import pyplot as plt
+
 import numpy as np
 from tensorflow.keras import preprocessing
 from tensorflow.keras.models import load_model

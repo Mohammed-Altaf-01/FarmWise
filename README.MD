@@ -60,6 +60,20 @@
   ```
 - Open the localhost url provided after running `app.py` and now you can use the project locally in your web browser.
 
+## Usage ⚙️
+
+You can use this project for further developing it and adding your work in it. If you use this project, kindly mention the original source of the project and mention the link of this repo in your report.
+
+## Further Improvements 📈
+
+This was my first big project so there are lot of things to improve upon
+
+- CSS code is totally messed up :pensive: (some code in file and some inline)
+- This app is purely made in python, fullstack can be used creating api endpoints using django,flask or fastapi.
+- More data can be collected manually via web scrapping to make the system more accurate :monocle_face:
+- Additional plant images can be collected to make the disease detection part more robust and generalized :face_with_head_bandage:
+- Modularized code can be written instead of writing in Jupyter Notebooks, and more scalability can be increased!
+
 ## DEMO
 
 - ### HomePage Navigation

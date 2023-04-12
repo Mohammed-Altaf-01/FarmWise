@@ -3,6 +3,8 @@ import openai
 import os
 import json
 import streamlit as st
+from dotenv import load_dotenv
+load_dotenv()
 
 
 @st.cache_data
@@ -14,7 +16,7 @@ def lottie_load_json(filepath: str):
 # system assistant and user there will be 3 roles.
 
 def Retreiving_Details(conversation):
-    apikey = st.secrets["api_key"]  # os.getenv("API_KEY")
+    apikey = os.getenv("API_KEY")  # st.secrets["api_key"]
     openai.api_key = apikey
     model = 'gpt-3.5-turbo'
     response = openai.ChatCompletion.create(

@@ -105,9 +105,8 @@ with col2:
                   y=sector, color='State Name', title=f'{sector} in {dist}')
     fig4 = px.bar(new_df, x='Year', y=sector)
     fig.update_traces(line_color='purple')
-
-    st.write(fig)
-    st.write(fig4)
+    st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+    st.plotly_chart(fig4, theme="streamlit", use_container_width=True)
 
 
 with col1:
@@ -123,7 +122,20 @@ with col1:
     fig2 = px.line(price_df, x='Year', y=crop, color="State Name",
                    title=f"{crop} in {dist_price}")
     fig3 = px.bar(price_df, x='Year', y=crop)
-    st.write(fig2)
-    st.write(fig3)
+
+    st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
+    st.plotly_chart(fig3, theme="streamlit", use_container_width=True)
 
 # figures end here
+
+
+# creating map using stereamlit
+
+df_map = pd.read_excel('pages//altitude.xlsx')
+fig_map = px.scatter_mapbox(
+    df_map, lat="Latitude", lon="Longitude", color_discrete_sequence=["fuchsia"], zoom=3, height=500)
+
+
+fig_map.update_layout(mapbox_style="open-street-map")
+fig_map.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+st.plotly_chart(fig_map, theme='streamlit', use_container_width=True)

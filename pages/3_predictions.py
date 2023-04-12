@@ -130,7 +130,8 @@ if button:
         f':smile: Your Farm is Suitable for Growing {crop}')
 
 if type_crop:  # optional parameter to grow the crop is given by the user then this condition is True
-    bar = st.progress(2, text=":heart: Please wait!")
+    bar = st.progress(
+        2, text=":heart: Please wait! **We Appreciate Your Patience**")
     # call the api here and let it load until the bar is finished then print it later
     question = []
     question.append(

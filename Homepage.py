@@ -178,7 +178,8 @@ with parts[1]:
         st_lottie.st_lottie(
             logo, loop=True, quality="high", width=90
         )
-        st.markdown('[Code!!](www.github.com)')
+        st.markdown(
+            '[Code!!](https://github.com/Mohammed-Altaf-01/gfg_hackathon-)')
     with co2:
         mail_logo = lottie_load_json('pages/lottie_json/gmail.json')
         st_lottie.st_lottie(mail_logo, loop=True, quality='high', width=90)

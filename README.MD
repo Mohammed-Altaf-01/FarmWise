@@ -35,12 +35,14 @@
 
 ## How to use 💻
 
-- _Predictin System_: enter the corresponding nutrient values of your soil, state and city. Note that, the N-P-K (Nitrogen-Phosphorous-Pottasium) values to be entered should be the ratio between them. Refer [this website](https://www.gardeningknowhow.com/garden-how-to/soil-fertilizers/fertilizer-numbers-npk.htm) for more information.
+- _Predictin System_: enter the corresponding nutrient values of your soil, state and city. Note that, the N-P-K (Nitrogen-Phosphorous-Pottasium) values to be entered should be the ratio between them. Refer [this website](https://www.gardeningknowhow.com/garden-how-to/soil-fertilizers/fertilizer-numbers-npk.htm) for more information. Navie Bayes classifier have been used for the classification
   Note: [Weather API](https://openweathermap.org/) from where humidity, temperature data is fetched.
 
 - _visualization_: At first there might note seem any importance for this. But in the current era, always being up-to-date is important. What's working? and what's not actually working?, is the question that can be solve with this page. Across various sectors and varioius types of crops distribution is shown in various Indian states.
 
-- _Image Classification System_: The user can upload an image in this or either take a clear picture with less stuff placed in the background for clear prediction.
+- _Image Classification System_: The user can upload an image in this or either take a clear picture with less stuff placed in the background for clear prediction. CNN has been trained on few thousand of images with logs as shown below:
+  <img src="images/loss.jpg" >
+  <img src="images/accuracy.jpg"  >
 
 ## How to run locally 🛠️
 
@@ -73,19 +75,6 @@ This was my first big project so there are lot of things to improve upon
 - More data can be collected manually via web scrapping to make the system more accurate :monocle_face:
 - Additional plant images can be collected to make the disease detection part more robust and generalized :face_with_head_bandage:
 - Modularized code can be written instead of writing in Jupyter Notebooks, and more scalability can be increased!
-
-## DEMO
-
-- ### HomePage Navigation
-
-![demo]()
-
-- ### Vizualizations
-
-![demo]
-
-- ### Image Classification
-  ![demo]()
 
 ## 🔗 Links
 

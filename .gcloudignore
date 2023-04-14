@@ -1,6 +1,5 @@
-Dockerfile 
+
 README.MD
 __pycache__
 .gitignore
 .git
-.dockerignore

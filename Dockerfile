@@ -1,18 +1,16 @@
-FROM python:3.10-alpine
+FROM python:3.10
 
 WORKDIR  /farmwise
 
-COPY requirements.txt ./requirements.txt
+COPY requirements.txt ./requirments.txt
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirments.txt
 
-EXPOSE 8501
+EXPOSE 8080
 
 COPY . /farmwise
 
-ENTRYPOINT ["streamlit","run"]
+CMD streamlit run --server.port 8080 --server.enableCORS false main.py
 
-CMD  ["main.py"]
-
-# CMD streamlit run main.py will also work the same 
+#specifying ports are compulsory incase of deploying it will create port for our app to run 
 

@@ -1,1 +1,2 @@
-runtime: python310
+runtime: custom
+env: flex

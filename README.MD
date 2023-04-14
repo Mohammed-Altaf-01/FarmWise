@@ -1,16 +1,17 @@
 # Farm Wise 🌿
 
-#### A compact website build on various factors adressing issues of farmers regarding there crops, this website has Three main parts. first one being a **_visualization_** playground. Where Trends according to the market can be seen, second being **_prediction_** where deping upon varioius factors of soil quality one can predict the type of crop he could grow. One cache if the person wanna grow another crop based on same nutrients he can know what changes are required. Last one being **_Classification_**, in this page user required to either click an image or upload an image of the leaf or plant which ever possible to know what disease one's field is having.
+#### A compact website build on various factors,addressing issues of farmers regarding their crops, this website has three main parts.The first part being a **_visualization_** playground. Where Trends according to the market can be seen, second being **_prediction_** where depending upon various factors of soil quality one can predict the type of crop he could grow. One cache if the person wanna grow another crop based on the same nutrients he can know what changes are required. Last one being **_Classification_**, in this page users are required to either click an image or upload an image of the leaf or plant whichever is  possible to know what disease one's field is having.
+
 
 ## DISCLAIMER ⚠️
 
-#### This is a POC(Proof of concept) kind-of project. The data used here comes up with no guarantee from the creator. So, don't use it for making farming decisions. If you do so, the creator is not responsible for anything. However, this project presents the idea that how we can use ML/DL into precision farming if developed at large scale and with authentic and verified data also, how emerging state of the art technology can be used for advanced develoopment in farming.
+#### This is a POC(Proof of concept) kind-of project. The data used here comes up with no guarantee from the creator. So, don't use it for making farming decisions. If you do so, the creator is not responsible for anything. However, this project presents the idea that how we can use ML/DL into precision farming if developed at large scale and with authentic and verified data also, how emerging state of the art technology can be used for advanced development in farming.
 
 ## MOTIVATION 💪
 
-- In country like India, majority of the population is dependent on agriculture for their livelihood. Many new technologies, such as Machine Learning and Deep Learning, are being implemented into agriculture so that it is easier for farmers to grow and maximize their yield. Farming is one of the major sectors that influences a country’s economic growth.
+- In countries like India, the majority of the population is dependent on agriculture for their livelihood. Many new technologies, such as Machine Learning and Deep Learning, are being implemented into agriculture so that it is easier for farmers to grow crops and maximize their yield. Farming is one of the major sectors that influences a country’s economic growth.
 
-- In this project, I present a website in which the following applications are implemented Crop Recommendation, visualization and Disease Classification respectively.
+- In this project, I present a website in which the following applications are implemented: Crop Recommendation, visualization and Disease Classification respectively.
 
 ## DATA SOURCE 📊
 
@@ -35,10 +36,10 @@
 
 ## How to use 💻
 
-- _Predictin System_: enter the corresponding nutrient values of your soil, state and city. Note that, the N-P-K (Nitrogen-Phosphorous-Pottasium) values to be entered should be the ratio between them. Refer [this website](https://www.gardeningknowhow.com/garden-how-to/soil-fertilizers/fertilizer-numbers-npk.htm) for more information. Navie Bayes classifier have been used for the classification
+- _Predictin System_: enter the corresponding nutrient values of your soil, state and city. Note that, the N-P-K (Nitrogen-Phosphorus-Potassium) values to be entered should be the ratio between them. Refer [this website](https://www.gardeningknowhow.com/garden-how-to/soil-fertilizers/fertilizer-numbers-npk.htm) for more information. Navie Bayes classifier have been used for the classification
   Note: [Weather API](https://openweathermap.org/) from where humidity, temperature data is fetched.
 
-- _visualization_: At first there might note seem any importance for this. But in the current era, always being up-to-date is important. What's working? and what's not actually working?, is the question that can be solve with this page. Across various sectors and varioius types of crops distribution is shown in various Indian states.
+- _visualization_: At first there might note seem any importance for this. But in the current era, always being up-to-date is important. What's working? and what's not actually working?, is the question that can be solved with this page. Across various sectors and various types of crops distribution is shown in various Indian states.
 
 - _Image Classification System_: The user can upload an image in this or either take a clear picture with less stuff placed in the background for clear prediction. CNN has been trained on few thousand of images with logs as shown below:
   <img src="images/loss.jpg" >
@@ -71,8 +72,8 @@ You can use this project for further developing it and adding your work in it. I
 This was my first big project so there are lot of things to improve upon
 
 - CSS code is totally messed up :pensive: (some code in file and some inline)
-- This app is purely made in python, fullstack can be used creating api endpoints using django,flask or fastapi.
-- More data can be collected manually via web scrapping to make the system more accurate :monocle_face:
+- This app is purely made in python, fullstack can be used for creating API endpoints using django,flask or fastapi.
+- More data can be collected manually via web scraping to make the system more accurate :monocle_face:
 - Additional plant images can be collected to make the disease detection part more robust and generalized :face_with_head_bandage:
 - Modularized code can be written instead of writing in Jupyter Notebooks, and more scalability can be increased!
 

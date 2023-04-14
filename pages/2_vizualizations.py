@@ -131,11 +131,11 @@ with col1:
 
 # creating map using stereamlit
 
-df_map = pd.read_excel('pages//altitude.xlsx')
-fig_map = px.scatter_mapbox(
-    df_map, lat="Latitude", lon="Longitude", color_discrete_sequence=["fuchsia"], zoom=3, height=500)
+# df_map = pd.read_excel('pages//altitude.xlsx')
+# fig_map = px.scatter_mapbox(
+#     df_map, lat="Latitude", lon="Longitude", color_discrete_sequence=["fuchsia"], zoom=3, height=500)
 
 
-fig_map.update_layout(mapbox_style="open-street-map")
-fig_map.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-st.plotly_chart(fig_map, theme='streamlit', use_container_width=True)
+# fig_map.update_layout(mapbox_style="open-street-map")
+# fig_map.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+# st.plotly_chart(fig_map, theme='streamlit', use_container_width=True)

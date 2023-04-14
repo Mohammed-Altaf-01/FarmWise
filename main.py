@@ -159,6 +159,20 @@ with parts[0]:
     with v3:
         with open("homepage_vid/pred.mp4", 'rb') as v:
             st.video(v)
+
+    st.markdown('---')
+    q4, v4 = st.columns(2)
+    with q4:
+        with open("homepage_vid/disease.mp4", 'rb') as v:
+            st.video(v)
+    with v4:
+        st.markdown("<h3>Know What disease your crops have with just a pic 📸</h3>",
+                    unsafe_allow_html=True)
+        st.markdown("""<p>choose if you want to upload the picture or take a picture using the front camera then, click the button and wait for the suggesions
+        the probability is very high in this suggesion, create your way further based on these suggesions.</p>""", unsafe_allow_html=True)
+        pr = st.button('Upload pic and click 🍂')
+        if pr:
+            switch_page('Disease_Detection')
 st_lottie.st_lottie(lottie_load_json(
     'pages/lottie_json//boygirl.json'))
 #        Welcome Tab Ends Here

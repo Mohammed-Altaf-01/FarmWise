@@ -2,6 +2,8 @@
 
 #### A compact website build on various factors,addressing issues of farmers regarding their crops, this website has three main parts.The first part being a **_visualization_** playground. Where trends according to the market can be seen, second being **_prediction_** where depending upon various factors of soil quality one can predict the type of crop he could grow. One cache if the person wanna grow another crop based on the same nutrients he can know what changes are required. Last one being **_Classification_**, in this page users are required to either click on image or upload an image of the leaf or plant whichever is possible to know what disease one's field is having.
 
+#### [Access the app here](https://farmwise-hprruiqhja-el.a.run.app/)
+
 ## DISCLAIMER ⚠️
 
 #### This is a POC(Proof of concept) kind-of project. The data used here comes up with no guarantee from the creator. So, don't use it for making farming decisions. If you do so, the creator is not responsible for anything. However, this project presents the idea that how we can use ML/DL into precision farming if developed at large scale and with authentic and verified data also, how emerging state of the art technology can be used for advanced development in farming.
@@ -26,6 +28,7 @@
 <code><img height="30" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png"></code>
 
 <code><img height="30" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png"></code>
+<code><img height="30" src="https://global.discourse-cdn.com/business7/uploads/streamlit/original/2X/8/8cb5b6c0e1fe4e4ebfd30b769204c0d30c332fec.png"></code>
 
 <code><img height="30" src="https://raw.githubusercontent.com/numpy/numpy/7e7f4adab814b223f7f917369a72757cd28b10cb/branding/icons/numpylogo.svg"></code>
 <code><img height="30" src="https://raw.githubusercontent.com/pandas-dev/pandas/761bceb77d44aa63b71dda43ca46e8fd4b9d7422/web/pandas/static/img/pandas.svg"></code>

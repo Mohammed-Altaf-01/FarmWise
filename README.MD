@@ -44,8 +44,13 @@
 - _visualization_: At first there might note seem any importance for this. But in the current era, always being up-to-date is important. What's working? and what's not actually working?, is the question that can be solved with this page. Across various sectors and various types of crops distribution is shown in various Indian states.
 
 - _Image Classification System_: The user can upload an image in this or either take a clear picture with less stuff placed in the background for clear prediction. CNN has been trained on few thousand of images with logs as shown below:
-  <img src="images/loss.jpg" >
-  <img src="images/accuracy.jpg"  >
+
+---
+
+<img src="images/loss.jpg">
+<img src="images/accuracy.jpg">
+
+---
 
 ## How to run locally 🛠️
 

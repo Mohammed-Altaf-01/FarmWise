@@ -11,6 +11,7 @@ st.set_page_config(
     layout="wide", initial_sidebar_state="collapsed", page_icon="🍁")
 with open('pages/static/custom_homepage.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
+
 hide_default_format = """
        <style>
        #MainMenu {visibility: hidden; }
@@ -79,23 +80,30 @@ st.components.v1.html("""
 # ---
 st.write('---')
 
-selection = st.selectbox('**Click to Select the Type of Configuration** ',
-                         options=['Upload', 'Take a Picture'])
 
-if selection == 'Upload':
-    image = st.file_uploader(
-        label='Click to Upload an Image 📸 ')
-    if image != None:
-        probability = prediction(Image.open(image))
+st.markdown("If you want to upload image,click on Upload button below else Choose the available example images give below 😊")
+saved_images = st.radio("Example Images",['Diseased Example','healthy Example','upload','Take a picture'],index=2)
 
-
-else:
-    co1, col2, col3 = st.columns([1, 2, 1])
-    col2.markdown(
+match saved_images: 
+        case "upload":
+            image = st.file_uploader(
+            label='Click to Upload an Image 📸')
+            if image != None:
+              probability = prediction(Image.open(image))
+            
+        case "Take a picture":
+          co1, col2, col3 = st.columns([1, 2, 1])
+          col2.markdown(
         '***make sure the image is taken clearly with less background noise if possible***')
-    image = col2.camera_input('click to take a picture of the leaf')
-    if image:
-        probability = prediction(Image.open(image))
+          image = col2.camera_input('click to take a picture of the leaf')
+            
+        case "Diseased Example":
+            image = "pages/static//apple_scab_disease.JPG"
+            probability = prediction(Image.open(image))
+        case "healthy Example":
+            image = "pages/static/healthy.JPG"
+            probability = prediction(Image.open(image))
+    
 
 if image != None:  # another condition for pic
     view = Image.open(image)
@@ -104,7 +112,7 @@ if image != None:  # another condition for pic
         label = list(file)[probability]
         stripped = re.sub("___|_|__", " ", label)
 
-        # calling the function before the actual button is clicked to improve speed
+       # calling the function before the actual button is clicked to improve speed
 
     button = st.button('Predict')
     if button:
@@ -126,19 +134,21 @@ if image != None:  # another condition for pic
             bar = st.progress(
                 2, text=":heart: Please wait! **We Appreciate Your Patience**")
 
-            for percent_complete in range(100):
-                time.sleep(0.001)
-                bar.progress(percent_complete, text=":heart: Please wait!")
-            st.subheader(val)
-
+            # retreiving the api call here 
             question = []
             question.append(
                 {'role': 'system',
-                 'content': f"what should be done to get rid of leaf {val}"})
+                 'content': f"how to cure leaf disease named as  {val}"})
             question = Retreiving_Details(question)
+
+            # loading the progress bar after calling api 
+            for percent_complete in range(100):
+                time.sleep(0.01)
+                bar.progress(percent_complete, text=":heart: Please wait!")
+            st.subheader(f"To Cure {val} Follow Below Tips 👇 ")
+
+
             # # adding this in the drop down  for better readibility
             st.write('{0}\n'.format(
                 question[-1]['content'].strip()))
-
-
 # train another model to predict leaf or note using existing data

@@ -10,8 +10,9 @@ import os
 import h5py
 
 
+
 def prediction(image):
-    classifier = load_model('pages/static/imageclassifier.h5')
+    classifier = load_model("pages/static/imageclassifier.h5")
     shape = ((226, 226, 3))
     test_image = image.resize((256, 256))
     test_image = preprocessing.image.img_to_array(test_image)

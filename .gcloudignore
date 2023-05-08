@@ -1,5 +1,7 @@
-
 README.MD
 __pycache__
 .gitignore
 .git
+Dockerfile 
+.dockerignore
+.cpython

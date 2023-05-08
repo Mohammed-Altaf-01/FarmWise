@@ -142,7 +142,7 @@ if type_crop:  # optional parameter to grow the crop is given by the user then t
     for percent_complete in range(100):
         time.sleep(0.0001)
         bar.progress(percent_complete, text=":heart: Please wait!")
-    st.subheader(type_crop)
+    st.subheader(f"To Grow {type_crop} You can do The following 👇")
     # # adding this in the drop down  for better readibility
     st.write('{0}\n'.format(
         question[-1]['content'].strip()))

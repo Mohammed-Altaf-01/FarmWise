@@ -1,4 +1,6 @@
-
 README.MD
 __pycache__
 .gitignore
+.gcloudignore 
+.git
+.cpython

@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import numpy as np
+from pages.static.helper import translation
 from util import Retreiving_Details
 import time
 st.set_page_config(
@@ -146,3 +147,5 @@ if type_crop:  # optional parameter to grow the crop is given by the user then t
     # # adding this in the drop down  for better readibility
     st.write('{0}\n'.format(
         question[-1]['content'].strip()))
+
+

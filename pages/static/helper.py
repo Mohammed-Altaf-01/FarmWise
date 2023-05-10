@@ -1,14 +1,14 @@
 import streamlit as st
 import tensorflow as tf
 from PIL import ImageOps, Image
-
+import requests
 import numpy as np
 from tensorflow.keras import preprocessing
 from tensorflow.keras.models import load_model
 from tensorflow.keras.activations import softmax
 import os
 import h5py
-
+from googletrans import Translator
 
 
 def prediction(image):
@@ -44,3 +44,50 @@ def tips():
 9.Sunlight: Ensure that your crops receive adequate sunlight. Most crops require at least six hours of sunlight per day. Choose a spot that receives the most sunlight for planting.
 
 10.Observation: Observe your crops regularly for signs of pests, diseases, or nutrient deficiencies. This will help you catch any problems early and take corrective action before they get worse."""
+
+
+
+# stable diffusion to generate V-1.5 image 
+
+def StableDiffusion(payload):
+    Stable_API_URL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
+    Stable_headers = {"Authorization": "Bearer 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"}
+    response = requests.post(Stable_API_URL, headers=Stable_headers, json=payload)
+    return response.content
+
+#translation using google translation api 
+def translation(text,language):
+    translator = Translator()
+    match language:
+        case 'english':
+            return text 
+        case 'hindi':
+            # translating english to hindi  
+            output = translator.translate(text, dest="hi")
+            return output.text 
+        case 'urdu':
+            # translating english to hindi  
+            output = translator.translate(text, dest="ur")
+            return output.text    
+        case 'punjabi':
+            # translating english to hindi  
+            output = translator.translate(text, dest="pa")
+            return output.text  
+        case 'telugu':
+            # translating english to hindi  
+            output = translator.translate(text, dest="te")
+            return output.text  
+        case 'tamil':
+            # translating english to hindi  
+            output = translator.translate(text, dest="ta")
+            return output.text  
+        case 'odia':
+            # translating english to hindi  
+            output = translator.translate(text, dest="or")
+            return output.text  
+
+def Summarization(text):
+    summarization_API_URL = "https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6"
+    summarization_headers = {"Authorization": "Bearer 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"}
+    response = requests.post(summarization_API_URL, headers=summarization_headers, json=text)
+    return response.json()

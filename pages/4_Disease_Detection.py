@@ -1,10 +1,11 @@
-from pages.static.helper import prediction, tips
+from pages.static.helper import prediction, tips,StableDiffusion,translation,Summarization
 import streamlit as st
 import re
 from util import Retreiving_Details
 from PIL import ImageOps, Image
 from matplotlib import pyplot as plt
 import time
+import io
 
 # configuring the page and adding the custom css layout
 st.set_page_config(
@@ -81,10 +82,13 @@ st.components.v1.html("""
 st.write('---')
 
 
-st.markdown("If you want to upload image,click on Upload button below else Choose the available example images give below 😊")
-saved_images = st.radio("Example Images",['Diseased Example','healthy Example','upload','Take a picture'],index=2)
+st.markdown("If you want to upload image,click on Upload button below else Choose the available example images give below and don't forget to choose your language below 😊")
 
-match saved_images: 
+col1,col2 = st.columns(2)
+with col1:
+  saved_images = st.radio("**Select Type**",['Diseased Example','healthy Example','upload','Take a picture','Generate Image'],index=2,horizontal=True)
+
+  match saved_images: 
         case "upload":
             image = st.file_uploader(
             label='Click to Upload an Image 📸')
@@ -103,11 +107,27 @@ match saved_images:
         case "healthy Example":
             image = "pages/static/healthy.JPG"
             probability = prediction(Image.open(image))
-    
+        case "Generate Image":
+            prompt = st.text_input("write the description of the Disease!",max_chars=55,placeholder="Example Prompt tomato leaf with black spots on it ")
+            if prompt:
+              image_bytes = StableDiffusion({
+	              "inputs": prompt, 
+                      })
+              image = io.BytesIO(image_bytes)
+              probability = prediction(Image.open(image))
+            else: 
+                image = None 
 
+
+with col2:
+    lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','ଓଡିଆ':"odia",'English':'english'}
+    language_conversion =st.radio("***Choose your language ?***",('English','हिंदी','తెలుగు','தமிழ்','ਪੰਜਾਬੀ','اردو',"ଓଡିଆ"),horizontal=True)
+    language = lang_dict[language_conversion]
+
+    
 if image != None:  # another condition for pic
     view = Image.open(image)
-    st.image(image, caption='Your uploaded Image👆')
+    st.image(image, caption='uploaded Image👆')
     with open('pages/labels.txt', 'r') as file:
         label = list(file)[probability]
         stripped = re.sub("___|_|__", " ", label)
@@ -117,22 +137,23 @@ if image != None:  # another condition for pic
     button = st.button('Predict')
     if button:
         if 'healthy' in stripped:
-            st.write(
-                'Your crops are healthy no need to worry,here are few tips to keep your crops and Plants healthy ')
-            st.write(tips())
-
+                st.write(translation('Your crops are healthy no need to worry,here are few tips to keep your crops and Plants healthy ',language))
+                tips = translation(tips(),language)
+                st.write(tips)
         else:
             lst = stripped.split(' ')
             if len(lst) == 3 or len(lst) == 2:
-                st.write(f'Your crop might have a disease {lst[-1]}')
+                text = f'Your crop might have a disease {lst[-1]}'
+                st.write(translation(text,language))
                 val = f"disease {lst[-1]}"
 
             elif len(lst) == 4:
-                st.write(
-                    f'Your crop might have a disease {lst[-3]} {lst[-2]} {lst[-1]}')
+                text = f'Your crop might have a disease {lst[-3]} {lst[-2]} {lst[-1]}'
+                st.write(translation(text,language))
                 val = f"disease {lst[-3]} {lst[-2]} {lst[-1]}"
+            progress_bar_text = translation("Please wait! We Appreciate Your Patience",language)
             bar = st.progress(
-                2, text=":heart: Please wait! **We Appreciate Your Patience**")
+                2, text=f":heart:{progress_bar_text}")
 
             # retreiving the api call here 
             question = []
@@ -144,11 +165,19 @@ if image != None:  # another condition for pic
             # loading the progress bar after calling api 
             for percent_complete in range(100):
                 time.sleep(0.01)
-                bar.progress(percent_complete, text=":heart: Please wait!")
-            st.subheader(f"To Cure {val} Follow Below Tips 👇 ")
+                bar.progress(percent_complete, text=f":heart:{progress_bar_text}")
+            subheader_text =f"To Cure {val} Follow Below Tips" 
+            st.subheader(f"{translation(subheader_text,language)} 👇")
 
 
             # # adding this in the drop down  for better readibility
-            st.write('{0}\n'.format(
-                question[-1]['content'].strip()))
+            generated_text ='{0}\n'.format(question[-1]['content'].strip()) 
+            st.write(translation(generated_text,language))
+            
+        st.write('---')
+        
+
+
+
+
 # train another model to predict leaf or note using existing data

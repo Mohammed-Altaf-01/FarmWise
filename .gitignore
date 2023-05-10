@@ -1,3 +1,4 @@
-.env
+virtualenv
 __pycache__
 .cpython
+.gcloudignore 

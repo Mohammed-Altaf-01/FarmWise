@@ -9,12 +9,14 @@ load_dotenv()
 
 @st.cache_data
 def lottie_load_json(filepath: str):
+    '''
+    This function is used to load the json GIFs using file paths as only parameter
+    '''
     with open(filepath, encoding="utf-8") as f:
         return json.load(f)
 
 
 # system assistant and user there will be 3 roles.
-
 def Retreiving_Details(conversation):
     apikey = os.getenv("API_KEY") or st.secrets["api_key"]
     openai.api_key = apikey

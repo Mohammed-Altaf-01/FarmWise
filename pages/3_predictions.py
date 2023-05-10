@@ -2,13 +2,13 @@ import streamlit as st
 import pickle
 import pandas as pd
 import numpy as np
-from pages.static.helper import translation
-from util import Retreiving_Details
+from pages.static.helper import *
+from pages.static.util import *
 import time
 st.set_page_config(
     layout="wide", initial_sidebar_state="collapsed", page_icon="🔮")
 
-with open('pages/static/custom_homepage.css') as pgdesign:
+with open('pages/pages_StyleSheet.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 hide_default_format = """
        <style>
@@ -21,17 +21,19 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 
 # getting the model and loading it
 df_gdp = pd.read_csv('pages/datasets/GDP.csv')
-prediction = pickle.load(open("pages//static//NavieBayes.pkl", "rb"))
+prediction = pickle.load(open("pages//ml_models//NavieBayes.pkl", "rb"))
 # reading the csv file
-df_pred = pd.read_csv('pages/static/crop_recommendation.csv')
+df_pred = pd.read_csv('pages/datasets/crop_recommendation.csv')
 columns = df_pred.columns[0:6]
+with st.spinner('Loading Please wait ...'):
+    time.sleep(3)
+
 st.markdown("""
 <h1 style="color: #333; font-family: 'Comic Sans MS', sans-serif; font-size: 35px; font-weight: bold; transition: color 0.1s ease-in-out;"
 ><span style="display: inline-block; transition: color 0.3s ease-in-out;"
 >Know What To Grow</span>🌾</h1>
 """, unsafe_allow_html=True)
-with open("pages/static//vizcss.css") as h:
-    st.markdown(f"<style> {h.read()}</style>", unsafe_allow_html=True)
+
 # heading of our page
 st.components.v1.html("""
 <!DOCTYPE html>
@@ -84,6 +86,10 @@ st.components.v1.html("""
 
 st.markdown("<a href=https://www.gardeningknowhow.com/garden-how-to/soil-fertilizers/fertilizer-numbers-npk.htm>Example</a>", unsafe_allow_html=True)
 
+lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','ଓଡିଆ':"odia",'English':'english'}
+language_conversion =st.radio("***Choose your language for Output  ?***",('English','हिंदी','తెలుగు','தமிழ்','ਪੰਜਾਬੀ','اردو',"ଓଡିଆ"),horizontal=True)
+language = lang_dict[language_conversion]
+
 val1, val2 = st.columns(2)
 with val1:
     state = st.selectbox(label='***Select the Indian State*** ',
@@ -127,12 +133,14 @@ if button:
     prediction = prediction.predict(values)
     i = np.random.randint(low=0, high=len(df_pred['ph']))
     crop = df_pred['label'][i]
+    subheader_value =  translation(f"Your Farm is Suitable for Growing {crop}",language)
     st.subheader(
-        f':smile: Your Farm is Suitable for Growing {crop}')
+        f':smile: {subheader_value}')
 
 if type_crop:  # optional parameter to grow the crop is given by the user then this condition is True
+    bar_text = translation("Please wait! We Appreciate Your Patience",language)
     bar = st.progress(
-        2, text=":heart: Please wait! **We Appreciate Your Patience**")
+        2, text=f":heart: {bar_text}")
     # call the api here and let it load until the bar is finished then print it later
     question = []
     question.append(
@@ -142,10 +150,10 @@ if type_crop:  # optional parameter to grow the crop is given by the user then t
     question = Retreiving_Details(question)
     for percent_complete in range(100):
         time.sleep(0.0001)
-        bar.progress(percent_complete, text=":heart: Please wait!")
-    st.subheader(f"To Grow {type_crop} You can do The following 👇")
-    # # adding this in the drop down  for better readibility
-    st.write('{0}\n'.format(
-        question[-1]['content'].strip()))
+        bar.progress(percent_complete, text=f":heart: {bar_text} ")
+    subheader2 = translation(f"To Grow {type_crop} You can do The following ",language)
+    st.subheader(f"{subheader2} 👇")
+    prompt = translation('{0}\n'.format(question[-1]['content'].strip()),language)
+    st.write(prompt)
 
 

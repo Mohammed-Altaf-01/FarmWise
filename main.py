@@ -1,12 +1,12 @@
 import streamlit as st
 import streamlit_lottie as st_lottie
 from streamlit_extras.switch_page_button import switch_page
-from util import *
+from pages.static.util import *
 st.set_page_config(
     page_title="Homepage-FarmWise",
     page_icon="💖",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="auto",
 )
 
 st.markdown("""<html>
@@ -76,7 +76,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("images/Farmer-bro.png", width=300)
+st.image("pages/media/images/Farmer-bro.png", width=300)
 st.caption("We Live By Nature and We Preserve Nature")
 # css styling applied to the page here :
 
@@ -100,15 +100,11 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 tabs = ["Welcome", '***Developer***']
 parts = st.tabs(tabs=tabs)
 
-
-#        Welcome Tab Starts Here
-
-
 # section 1 and the question 1 part
 with parts[0]:
-
     q1, v1 = st.columns(2)
-    with q1:
+
+    with q1: 
         st.markdown("<h3>Navigate Yourself Properly Using This Video Here 👉</h3>",
                     unsafe_allow_html=True)
 
@@ -119,19 +115,21 @@ with parts[0]:
 
         Loved_it = st.button("Click To Chill ❄ ")
         if Loved_it:
+            # if the button is clicked snow effects will occur 
             st.snow()
-
         welcome_bot = lottie_load_json(
             'pages/lottie_json/hello_bot.json')
         st_lottie.st_lottie(welcome_bot, quality='ultrahigh', width=250)
+
     with v1:
-        with open("homepage_vid/homepage.mp4", 'rb') as v:
+        with open("pages/media/homepage_vid/homepage.mp4", 'rb') as v:
             st.video(v)
     st.write('---')
 
     q2, v2 = st.columns(2)
+
     with q2:
-        with open("homepage_vid//viz.mp4", 'rb') as v:
+        with open("pages/media/homepage_vid//viz.mp4", 'rb') as v:
             st.video(v)
 
     with v2:
@@ -144,10 +142,11 @@ with parts[0]:
         viz = st.button('Try Vizuals Out ')
         if viz:
             switch_page("vizualizations")
-        st.image("images/Q1.png", width=250)
-
+        st.image("pages/media/images/Q1.png", width=250)
     st.markdown('---')
+
     q3, v3 = st.columns(2)
+
     with q3:
         st.markdown("<h3>Know What Crops You should Prefer Growing Based On Soil Nutrients!🌱</h3>",
                     unsafe_allow_html=True)
@@ -157,13 +156,13 @@ with parts[0]:
         if pr:
             switch_page('predictions')
     with v3:
-        with open("homepage_vid/pred.mp4", 'rb') as v:
+        with open("pages/media/homepage_vid/pred.mp4", 'rb') as v:
             st.video(v)
 
     st.markdown('---')
     q4, v4 = st.columns(2)
     with q4:
-        with open("homepage_vid/disease.mp4", 'rb') as v:
+        with open("pages/media/homepage_vid/disease.mp4", 'rb') as v:
             st.video(v)
     with v4:
         st.markdown("<h3>Know What disease your crops have with just a pic 📸</h3>",

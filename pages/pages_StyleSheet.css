@@ -68,3 +68,10 @@ div.css-rvekum.e16nr0p34{
 
     background-color: #A2DFF8;
 }
+
+h1 span:hover {
+    color: #8BC34A;
+  }
+h1{
+    text-align: center;
+  }

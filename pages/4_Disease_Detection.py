@@ -1,7 +1,7 @@
-from pages.static.helper import prediction, tips,StableDiffusion,translation,Summarization
+from pages.static.helper import *
 import streamlit as st
 import re
-from util import Retreiving_Details
+from pages.static.util import Retreiving_Details
 from PIL import ImageOps, Image
 from matplotlib import pyplot as plt
 import time
@@ -10,7 +10,7 @@ import io
 # configuring the page and adding the custom css layout
 st.set_page_config(
     layout="wide", initial_sidebar_state="collapsed", page_icon="🍁")
-with open('pages/static/custom_homepage.css') as pgdesign:
+with open('pages/pages_StyleSheet.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 
 hide_default_format = """
@@ -20,6 +20,8 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
+with st.spinner('Loading Please wait ...'):
+    time.sleep(3)
 
 # adding header to our page
 st.markdown("""
@@ -27,8 +29,7 @@ st.markdown("""
 ><span style="display: inline-block; transition: color 0.3s ease-in-out;"
 >HEALTHY OR NOT  </span>🤔</h1>
 """, unsafe_allow_html=True)
-with open("pages/static//vizcss.css") as h:
-    st.markdown(f"<style> {h.read()}</style>", unsafe_allow_html=True)
+
 st.components.v1.html("""
 <!DOCTYPE html>
 <html>
@@ -102,20 +103,23 @@ with col1:
           image = col2.camera_input('click to take a picture of the leaf')
             
         case "Diseased Example":
-            image = "pages/static//apple_scab_disease.JPG"
+            image = "pages/media/images//apple_scab_disease.JPG"
             probability = prediction(Image.open(image))
         case "healthy Example":
-            image = "pages/static/healthy.JPG"
+            image = "pages/media/images/healthy.JPG"
             probability = prediction(Image.open(image))
         case "Generate Image":
-            prompt = st.text_input("write the description of the Disease!",max_chars=55,placeholder="Example Prompt tomato leaf with black spots on it ")
-            if prompt:
+            prompt = st.text_input("write the description of the Disease!",max_chars=55,placeholder="Example Prompt -->  tomato leaf with black spots on it ")
+            if prompt and PromptChecker(prompt):
               image_bytes = StableDiffusion({
 	              "inputs": prompt, 
                       })
               image = io.BytesIO(image_bytes)
               probability = prediction(Image.open(image))
-            else: 
+            elif PromptChecker(prompt) == False:
+                st.warning("Please enter a proper prompt explaining your need!",icon="🛑")
+                image = None 
+            else:
                 image = None 
 
 
@@ -128,7 +132,7 @@ with col2:
 if image != None:  # another condition for pic
     view = Image.open(image)
     st.image(image, caption='uploaded Image👆')
-    with open('pages/labels.txt', 'r') as file:
+    with open('pages/datasets/labels.txt', 'r') as file:
         label = list(file)[probability]
         stripped = re.sub("___|_|__", " ", label)
 

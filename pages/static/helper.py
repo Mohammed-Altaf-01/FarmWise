@@ -12,7 +12,7 @@ from googletrans import Translator
 
 
 def prediction(image):
-    classifier = load_model("pages/static/imageclassifier.h5")
+    classifier = load_model("pages/ml_models/imageclassifier.h5")
     shape = ((226, 226, 3))
     test_image = image.resize((256, 256))
     test_image = preprocessing.image.img_to_array(test_image)
@@ -24,6 +24,7 @@ def prediction(image):
     return np.argmax(prediction[0])  # labels[np.argmax(prediction[0])]
 
 
+@st.cache_data
 def tips():
     return """1.Use quality seeds: Make sure to use high-quality seeds to start your crops. Healthy seeds have better resistance to pests and diseases and will help ensure a strong start for your crops.
 
@@ -86,8 +87,27 @@ def translation(text,language):
             output = translator.translate(text, dest="or")
             return output.text  
 
-def Summarization(text):
-    summarization_API_URL = "https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6"
-    summarization_headers = {"Authorization": "Bearer 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"}
-    response = requests.post(summarization_API_URL, headers=summarization_headers, json=text)
-    return response.json()
+
+def PromptChecker(prompt):
+    str = prompt.split(" ")
+    verification_list = ["how","what",'want','leaf','grow','plant','flower','crop','disease','unhealthy','spots','color','green','colour','healthy','feartelizer','farming','agriculture','agribussiness','potato','tomato','ladyfinger','garlic','root','Vegetable',"Ash gourd"	,'Broccoli','Cucumber','Celery','Bitter gourd','Greens',"Carrot",'Spring onions','Potato','Capsicum','Turnip','Brinjal''Tomato',	'Green peas',	'Ginger'	,'Apple gourd',
+                'Onion',	'Cauliflower'	,'Beetroot'	,'Ridged gourd','Garlic',	'Cabbage' ,'Mushroom',"Lady's finger"	,'Snake gourd	','Ivy gourd', 'Scarlet gourd',	'Spinach',
+                'Beans','Lab labGreen papaya','Corn','Pumpkin'	,'Bottle gourd	','Snake beans' ,'Yard long beans',	'Okra','White pumpkin','Apple','Banana','Apricot',   'Atemoya ', ' Avocados',   'Blueberry ', ' Blackcurrant ',  'Ackee',   'Cranberry'  , 'Cantaloupe',   'Cherry'  , 'Black', 'sapote/Chocolate', 'pudding', 'fruit',   'Dragonrfruit'  , 'Dates'   ,'Cherimoya'  , "Buddha's hand", 'fruit ',  'Finger', 'Lime ',  'Fig'  , 'Coconut' ,
+               'Cape', 'gooseberry','Inca', 'berry','Physalis ',  'Grapefruit'  , 'Gooseberries'  ,' Custard', 'apple/Sugar',  'Hazelnut'  , 'Honeyberries' ,  'Dragon', 'fruit ',  'Durian'   ,'Horned', 'Melon ' , 'Hog', 'Plum ',' Egg', 'fruit   Feijoa/Pineapple', 
+               'guava/Guavasteen','Indian', 'Fig   Ice', 'Apple  ', 'Guava   Fuyu', 'Persimmon '  ,'Jackfruit ','  Jujube ','  Honeydew', 'melon',   'Jenipapo' ,  'Kiwi'  , 'Kabosu' ,  'Kiwano'  ,' Kaffir', 'lime/Makrut', 'Lime',   'Lime'  , 'Lychee' ,  'Longan'   ,'Langsat' ,  'Mango' ,  'Mulberry'  , 'Pear'  , 'Lucuma' ,  'Muskmelon'  , 'Naranjilla' ,   'Olive' ,  'Oranges' ,     'Pomegranate' ,  'Pineapple' ,   'Raspberries' ,  'Strawberries' ,  'Starfruit' , 'Watermelon' ,  'Sapota'  , 'Star', 'apple']
+    extended = [i.lower().strip() for i in verification_list]  #extended was not working 
+    for i in str:
+        if i.lower() in extended:
+            return True
+    else:
+        return False
+
+
+# if __name__ == "__main__":
+#     while True:
+#         value = input("enter your prompt    ")
+#         if value =='exit':
+#             break
+#         else:
+#             print(PromptChecker(value))
+

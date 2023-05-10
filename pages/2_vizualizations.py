@@ -2,11 +2,13 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import numpy as np
+import time 
 import plotly.graph_objects as go
 st.set_page_config(
-    layout="wide", initial_sidebar_state="collapsed", page_icon="📽")
+    layout="wide", initial_sidebar_state="auto", page_icon="📽")
 
-with open('pages/static/custom_homepage.css') as pgdesign:
+
+with open('pages/pages_StyleSheet.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 hide_default_format = """
        <style>
@@ -14,6 +16,8 @@ hide_default_format = """
        footer {visibility: hidden;}
        </style>
        """
+with st.spinner('Loading Please wait ...'):
+    time.sleep(3)
 
 # heading of our page
 st.markdown("""
@@ -21,9 +25,7 @@ st.markdown("""
 > <span style="display: inline-block; transition: color 0.3s ease-in-out;"
 >Know the Trends and Patterns in the Indian Agriculture Market!!</span> 📈</h1>
 """, unsafe_allow_html=True)
-with open("pages/static//vizcss.css") as h:
-    st.markdown(f"<style> {h.read()}</style>", unsafe_allow_html=True)
-st.markdown(hide_default_format, unsafe_allow_html=True)
+
 
 st.components.v1.html("""
 <!DOCTYPE html>

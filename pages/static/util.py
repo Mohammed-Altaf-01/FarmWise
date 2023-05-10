@@ -15,7 +15,7 @@ def lottie_load_json(filepath: str):
     with open(filepath, encoding="utf-8") as f:
         return json.load(f)
 
-
+@st.cache_resource
 # system assistant and user there will be 3 roles.
 def Retreiving_Details(conversation):
     apikey = st.secrets["API_KEY"]

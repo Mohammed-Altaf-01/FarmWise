@@ -2,3 +2,4 @@ virtualenv
 __pycache__
 .cpython
 .gcloudignore 
+.env

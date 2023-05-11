@@ -103,6 +103,9 @@ st.markdown(
     <div class="snowflake">{animation_symbol}</div>
     <div class="snowflake">{animation_symbol}</div>
     <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+
     """,
     unsafe_allow_html=True,
 )

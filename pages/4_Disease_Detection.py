@@ -128,9 +128,7 @@ with col1:
 
 
 with col2:
-    lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','ଓଡିଆ':"odia",'English':'english'}
     language_conversion =st.radio("***Choose your language ?***",('English','हिंदी','తెలుగు','தமிழ்','ਪੰਜਾਬੀ','اردو',"ଓଡିଆ"),horizontal=True)
-    language = lang_dict[language_conversion]
 
     
 if image != None:  # another condition for pic
@@ -145,21 +143,21 @@ if image != None:  # another condition for pic
     button = st.button('Predict')
     if button:
         if 'healthy' in stripped:
-                st.write(translation('Your crops are healthy no need to worry,here are few tips to keep your crops and Plants healthy ',language))
-                tips = translation(tips(),language)
+                st.write(translation('Your crops are healthy no need to worry,here are few tips to keep your crops and Plants healthy ',language_conversion))
+                tips = translation(tips(),language_conversion)
                 st.write(tips)
         else:
             lst = stripped.split(' ')
             if len(lst) == 3 or len(lst) == 2:
                 text = f'Your crop might have a disease {lst[-1]}'
-                st.write(translation(text,language))
+                st.write(translation(text,language_conversion))
                 val = f"disease {lst[-1]}"
 
             elif len(lst) == 4:
                 text = f'Your crop might have a disease {lst[-3]} {lst[-2]} {lst[-1]}'
-                st.write(translation(text,language))
+                st.write(translation(text,language_conversion))
                 val = f"disease {lst[-3]} {lst[-2]} {lst[-1]}"
-            progress_bar_text = translation("Please wait! We Appreciate Your Patience",language)
+            progress_bar_text = translation("Please wait! We Appreciate Your Patience",language_conversion)
             bar = st.progress(
                 2, text=f"💖 {progress_bar_text}")
 
@@ -175,12 +173,12 @@ if image != None:  # another condition for pic
                 time.sleep(0.01)
                 bar.progress(percent_complete, text=f"💖 {progress_bar_text}")
             subheader_text =f"To Cure {val} Follow Below Tips" 
-            st.subheader(f"{translation(subheader_text,language)} 👇")
+            st.subheader(f"{translation(subheader_text,language_conversion)} 👇")
 
 
             # # adding this in the drop down  for better readibility
             generated_text ='{0}\n'.format(question[-1]['content'].strip()) 
-            st.write(translation(generated_text,language))
+            st.write(translation(generated_text,language_conversion))
             
         st.write('---')
         

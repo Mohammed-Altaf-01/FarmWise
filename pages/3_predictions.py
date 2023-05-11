@@ -95,9 +95,8 @@ st.components.v1.html("""
 
 st.markdown("<a href=https://www.gardeningknowhow.com/garden-how-to/soil-fertilizers/fertilizer-numbers-npk.htm>Example</a>", unsafe_allow_html=True)
 
-lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','ଓଡିଆ':"odia",'English':'english'}
 language_conversion =st.radio("***Choose your language for Output  ?***",('English','हिंदी','తెలుగు','தமிழ்','ਪੰਜਾਬੀ','اردو',"ଓଡିଆ"),horizontal=True)
-language = lang_dict[language_conversion]
+
 
 val1, val2 = st.columns(2)
 with val1:
@@ -142,27 +141,23 @@ if button:
     prediction = prediction.predict(values)
     i = np.random.randint(low=0, high=len(df_pred['ph']))
     crop = df_pred['label'][i]
-    subheader_value =  translation(f"Your Farm is Suitable for Growing {crop}",language)
+    subheader_value =  translation(f"Your Farm is Suitable for Growing {crop}",language_conversion)
     st.subheader(
         f':smile: {subheader_value}')
 
 if type_crop:  # optional parameter to grow the crop is given by the user then this condition is True
-    bar_text = translation("Please wait! We Appreciate Your Patience",language)
+    bar_text = translation("Please wait! We Appreciate Your Patience",language_conversion)
     bar = st.progress(
         2, text=f":heart: {bar_text}")
     # call the api here and let it load until the bar is finished then print it later
-    question = []
-    question.append(
-        {'role': 'system',
-         'content': f"What should I do If I want to Grow {type_crop} in my farm in {state} in the {dist} district,\
-                    with the values of fertilizer's of proportions as nitrogen:**{n}**,phosphorus:**{p}**,and pottasium:**{k}**?"})
+    question = f"What should I do If I want to Grow {type_crop} in my farm in {state} in the {dist} district,with the values of fertilizer's of proportions as nitrogen:**{n}**,phosphorus:**{p}**,and pottasium:**{k}**?"
     question = Retreiving_Details(question)
     for percent_complete in range(100):
         time.sleep(0.0001)
         bar.progress(percent_complete, text=f":heart: {bar_text} ")
-    subheader2 = translation(f"To Grow {type_crop} You can do The following ",language)
+    subheader2 = translation(f"To Grow {type_crop} You can do The following ",language_conversion)
     st.subheader(f"{subheader2} 👇")
-    prompt = translation('{0}\n'.format(question[-1]['content'].strip()),language)
+    prompt = translation('{0}\n'.format(question[-1]['content'].strip()),language_conversion)
     st.write(prompt)
 
 

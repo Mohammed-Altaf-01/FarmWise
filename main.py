@@ -127,8 +127,9 @@ with parts[0]:
         st_lottie.st_lottie(welcome_bot, quality='ultrahigh', width=250)
 
     with v1:
-        with open("pages/media/homepage_vid/homepage.mp4", 'rb') as v:
+        with open("pages/media/homepage_vid//viz.mp4", 'rb') as v:
             st.video(v)
+
     st.write('---')
 
     q2, v2 = st.columns(2)

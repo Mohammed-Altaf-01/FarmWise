@@ -6,13 +6,18 @@ st.set_page_config(
     page_title="Homepage-FarmWise",
     page_icon="💖",
     layout="wide",
-    initial_sidebar_state="auto",
+    initial_sidebar_state="collapsed",
 )
 
 st.markdown("""<html>
 <body><h1 class="glow"> Farm Wise </h1></body>
 </html>""", unsafe_allow_html=True)
-
+st.markdown(f'''
+    <style>
+    section[data-testid="stSidebar"] .css-ng1t4o {{width: 2rem;}}
+     section[data-testid="stSidebar"] .css-1d391kg {{width: 2rem;}}
+    </style>
+''',unsafe_allow_html=True)
 st.markdown("""
 <h2 style="color: #333; font-family: 'verdana', sans-serif; font-size: 30px; font-weight: bold; transition: color 0.1s ease-in-out;"
 > <span style="display: inline-block; transition: color 0.3s ease-in-out;"

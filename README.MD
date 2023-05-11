@@ -47,10 +47,17 @@
 
 ---
 
-<img src="images/loss.jpg">
-<img src="images/accuracy.jpg">
+<img src="pages/media/images/loss.jpg">
+<img src="pages/media/images/accuracy.jpg">
 
 ---
+
+## Below are Few working videos of our WebAPP
+
+<video src="pages/media/homepage_vid/homepage.mp4" autoplay muted></video>
+<video src="pages/media/homepage_vid/pred.mp4" autoplay muted></video>
+<video src="pages/media/homepage_vid/viz.mp4" autoplay muted></video>
+<video src="pages/media/homepage_vid/disease.mp4" autoplay muted></video>
 
 ## How to run locally 🛠️
 

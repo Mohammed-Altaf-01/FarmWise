@@ -1,17 +1,25 @@
+# third party imports 
 import streamlit as st
 import tensorflow as tf
-from PIL import ImageOps, Image
-import requests
 import numpy as np
 from tensorflow.keras import preprocessing
 from tensorflow.keras.models import load_model
 from tensorflow.keras.activations import softmax
-import os
-import h5py
 from googletrans import Translator
 
 
+# built in imports 
+import requests
+import os
+from PIL import ImageOps, Image
+import h5py
+
+
 def prediction(image):
+    """
+    Input is a image which is PIL's Image object and converts it into array before classifing it into a prediction 
+
+    """
     classifier = load_model("pages/ml_models/imageclassifier.h5")
     shape = ((226, 226, 3))
     test_image = image.resize((256, 256))
@@ -26,6 +34,9 @@ def prediction(image):
 
 @st.cache_data
 def tips():
+    """
+    This function just works for non diseased images, reducing the api call load 
+    """
     return """1.Use quality seeds: Make sure to use high-quality seeds to start your crops. Healthy seeds have better resistance to pests and diseases and will help ensure a strong start for your crops.
 
 2.Soil health: Good soil health is essential for healthy crops. Make sure the soil has adequate nutrients, pH level, and organic matter. You can also add compost or fertilizer to enrich the soil.
@@ -51,6 +62,9 @@ def tips():
 # stable diffusion to generate V-1.5 image 
 
 def StableDiffusion(payload):
+    """
+    This is a stable diffusion API which will give user a chance to generate new images based there need 
+    """
     Stable_API_URL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
     Stable_headers = {"Authorization": "Bearer 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"}
     response = requests.post(Stable_API_URL, headers=Stable_headers, json=payload)
@@ -58,6 +72,9 @@ def StableDiffusion(payload):
 
 #translation using google translation api 
 def translation(text,language):
+    """
+    Takes input a text and the language to convert into and return the given text converted into that specific language
+    """
     lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','ଓଡିଆ':"odia",'English':'english'}
     language = lang_dict[language]
     translator = Translator()
@@ -91,6 +108,10 @@ def translation(text,language):
 
 
 def PromptChecker(prompt):
+    """
+    takes in a prompt or a statement and checeks weather it include agriculture and farm related statements or not 
+    
+    """
     str = prompt.split(" ")
     verification_list = ['buisness','want','agriculture','agricultural','tips','tricks','leaf','grow','plant','flower','crop','disease','unhealthy','spots','color','green','colour','healthy','feartelizer','farming','agriculture','agribussiness','potato','tomato','ladyfinger','garlic','root','Vegetable',"Ash gourd"	,'Broccoli','Cucumber','Celery','Bitter gourd','Greens',"Carrot",'Spring onions','Potato','Capsicum','Turnip','Brinjal''Tomato',	'Green peas',	'Ginger'	,'Apple gourd',
                 'Onion',	'Cauliflower'	,'Beetroot'	,'Ridged gourd','Garlic',	'Cabbage' ,'Mushroom',"Lady's finger"	,'Snake gourd	','Ivy gourd', 'Scarlet gourd',	'Spinach',

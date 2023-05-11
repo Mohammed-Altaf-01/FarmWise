@@ -29,10 +29,9 @@ if prompt:
     st.session_state.prompt.append(prompt)
     st.session_state.response.append("hi")
     st.session_state.counter += 1
+    
 
-if len(st.session_state.prompt) > 7:
-    pass
-    # raise RerunException()
+
     
 if st.session_state.counter >= 2:
         for i in range(st.session_state.counter-1):
@@ -43,3 +42,8 @@ elif st.session_state.counter == 1:
         st.write(st.session_state.prompt[0])
         st.write(st.session_state.response[0])
         st.divider()
+if len(st.session_state.prompt) > 5:
+    st.session_state.prompt  = []
+    st.session_state.response = []
+    st.session_state.counter = 0
+   

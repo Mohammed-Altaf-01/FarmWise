@@ -25,8 +25,17 @@ prediction = pickle.load(open("pages//ml_models//NavieBayes.pkl", "rb"))
 # reading the csv file
 df_pred = pd.read_csv('pages/datasets/crop_recommendation.csv')
 columns = df_pred.columns[0:6]
-with st.spinner('Loading Please wait ...'):
-    time.sleep(3)
+def spinner():
+    with st.spinner('Loading Please wait ...'):
+      time.sleep(3)
+
+    
+if "counter" not in st.session_state:
+    st.session_state.counter = 1
+
+if st.session_state.counter ==1:
+    spinner()
+    st.session_state.counter += 1
 
 st.markdown("""
 <h1 style="color: #333; font-family: 'Comic Sans MS', sans-serif; font-size: 35px; font-weight: bold; transition: color 0.1s ease-in-out;"

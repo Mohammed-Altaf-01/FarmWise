@@ -20,8 +20,12 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
-with st.spinner('Loading Please wait ...'):
-    time.sleep(3)
+if "counter" not in st.session_state:
+    st.session_state.counter = 1
+
+if st.session_state.counter ==1:
+    spinner()
+    st.session_state.counter += 1
 
 # adding header to our page
 st.markdown("""
@@ -157,7 +161,7 @@ if image != None:  # another condition for pic
                 val = f"disease {lst[-3]} {lst[-2]} {lst[-1]}"
             progress_bar_text = translation("Please wait! We Appreciate Your Patience",language)
             bar = st.progress(
-                2, text=f":heart:{progress_bar_text}")
+                2, text=f"💖 {progress_bar_text}")
 
             # retreiving the api call here 
             question = []
@@ -169,7 +173,7 @@ if image != None:  # another condition for pic
             # loading the progress bar after calling api 
             for percent_complete in range(100):
                 time.sleep(0.01)
-                bar.progress(percent_complete, text=f":heart:{progress_bar_text}")
+                bar.progress(percent_complete, text=f"💖 {progress_bar_text}")
             subheader_text =f"To Cure {val} Follow Below Tips" 
             st.subheader(f"{translation(subheader_text,language)} 👇")
 

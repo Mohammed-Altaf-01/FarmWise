@@ -17,6 +17,19 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
+animation_symbol = "❄"  # Load Animation
+st.markdown(
+    f"""
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 
 # getting the model and loading it
@@ -33,7 +46,7 @@ def spinner():
 if "counter" not in st.session_state:
     st.session_state.counter = 1
 
-if st.session_state.counter ==1:
+if st.session_state.counter == 1:
     spinner()
     st.session_state.counter += 1
 

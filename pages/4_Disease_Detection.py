@@ -165,10 +165,7 @@ if image != None:  # another condition for pic
                 2, text=f"💖 {progress_bar_text}")
 
             # retreiving the api call here 
-            question = []
-            question.append(
-                {'role': 'system',
-                 'content': f"how to cure leaf disease named as  {val}"})
+            question = f"how to cure leaf disease named as  {val}"
             question = Retreiving_Details(question)
 
             # loading the progress bar after calling api 

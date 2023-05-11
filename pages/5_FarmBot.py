@@ -61,8 +61,7 @@ if 'response' not in st.session_state:
     st.session_state.response = []
 if "prompt" not in st.session_state:
     st.session_state.prompt = []
-if 'counter' not in st.session_state:
-    st.session_state.counter = 0 
+
 
 def spinner():
     with st.spinner('Calling Your 🤖 ...'):
@@ -94,7 +93,7 @@ if submit1:
         st.write(translation(response_prompt,language))
         st.session_state.prompt.append(prompt)
         st.session_state.response.append(response_prompt)
-        st.session_state.counter += 1
+        
         st.divider()
     else:
         st.warning("Please Ask an Agriculture Related Question",icon="🌱")
@@ -102,7 +101,13 @@ if submit1:
 
     
 if st.session_state.counter >= 2:
-        for i in range(st.session_state.counter-1):
+        for i in range(len(st.session_state.prompt)):
+            st.caption(f"{i} - Question and it's Response ")
+            st.markdown(f"<h3>{st.session_state.prompt[i]}</h3>",unsafe_allow_html=True)
+            st.markdown(f"<h7>{st.session_state.response[i]}</h7>",unsafe_allow_html=True)
+            st.divider()
+if st.session_state.counter <= 1:
+        for i in range(len(st.session_state.prompt)):
             st.caption(f"{i} - Question and it's Response ")
             st.markdown(f"<h3>{st.session_state.prompt[i]}</h3>",unsafe_allow_html=True)
             st.markdown(f"<h7>{st.session_state.response[i]}</h7>",unsafe_allow_html=True)
@@ -112,6 +117,6 @@ if st.session_state.counter >= 2:
 if len(st.session_state.prompt) > 5:
     st.session_state.prompt  = []
     st.session_state.response = []
-    st.session_state.counter = 0
+
 
 # this is not wormkking we have to use session state 

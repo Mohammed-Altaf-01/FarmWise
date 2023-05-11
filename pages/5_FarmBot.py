@@ -6,7 +6,13 @@ import streamlit as st
 
 st.set_page_config(
     layout="wide", initial_sidebar_state="auto", page_icon="🤖")
-
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)
 st.components.v1.html("""
 <!DOCTYPE html>
 <html>

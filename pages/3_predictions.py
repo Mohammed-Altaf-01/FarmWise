@@ -6,7 +6,7 @@ from pages.static.helper import *
 from pages.static.util import *
 import time
 st.set_page_config(
-    layout="wide", initial_sidebar_state="collapsed", page_icon="🔮")
+    layout="wide", initial_sidebar_state="auto", page_icon="🔮")
 
 with open('pages/pages_StyleSheet.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)

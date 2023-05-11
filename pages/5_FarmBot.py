@@ -5,7 +5,7 @@ import time
 import streamlit as st
 
 st.set_page_config(
-    layout="wide", initial_sidebar_state="collapsed", page_icon="🤖")
+    layout="wide", initial_sidebar_state="auto", page_icon="🤖")
 
 st.components.v1.html("""
 <!DOCTYPE html>

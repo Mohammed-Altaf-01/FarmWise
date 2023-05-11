@@ -9,7 +9,7 @@ import io
 
 # configuring the page and adding the custom css layout
 st.set_page_config(
-    layout="wide", initial_sidebar_state="collapsed", page_icon="🍁")
+    layout="wide", initial_sidebar_state="auto", page_icon="🍁")
 with open('pages/pages_StyleSheet.css') as pgdesign:
     st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
 
@@ -23,6 +23,9 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 if "counter" not in st.session_state:
     st.session_state.counter = 1
 
+def spinner():
+    with st.spinner('Loading Please wait ...'):
+      time.sleep(2)
 if st.session_state.counter ==1:
     spinner()
     st.session_state.counter += 1
@@ -184,6 +187,3 @@ if image != None:  # another condition for pic
         
 
 
-
-
-# train another model to predict leaf or note using existing data

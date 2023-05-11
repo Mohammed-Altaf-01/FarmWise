@@ -16,9 +16,17 @@ hide_default_format = """
        footer {visibility: hidden;}
        </style>
        """
-with st.spinner('Loading Please wait ...'):
-    time.sleep(3)
+st.markdown(hide_default_format, unsafe_allow_html=True)
 
+def spinner():
+    with st.spinner('Loading Please wait ...'):
+      time.sleep(3)
+if "counter" not in st.session_state:
+    st.session_state.counter = 1
+
+if st.session_state.counter ==1:
+    spinner()
+    st.session_state.counter += 1
 # heading of our page
 st.markdown("""
 <h1 style="color: #333; font-family: 'Comic Sans MS', sans-serif; font-size: 35px; font-weight: bold; transition: color 0.1s ease-in-out;"
@@ -87,10 +95,9 @@ df_price_columns = df_prices.columns
 
 st.write('---')
 # dividing and working with columns on our page
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([2,2])
 with col2:
-    inner_col, val = st.columns(2)
-    with inner_col:
+
         state = st.selectbox(label='***Select the Indian State*** 👇',
                              options=df_gdp['State Name'].unique())
         a = df_gdp['State Name'] == state
@@ -101,14 +108,14 @@ with col2:
                               options=df_gdp_columns[5:],)
 
     # plotting the figure ..
-    flush = df_gdp['Dist Name'] == dist
-    new_df = df_gdp.loc[flush, ['Year', sector, 'State Name']]
-    fig = px.line(new_df, x='Year',
+        flush = df_gdp['Dist Name'] == dist
+        new_df = df_gdp.loc[flush, ['Year', sector, 'State Name']]
+        fig = px.line(new_df, x='Year',
                   y=sector, color='State Name', title=f'{sector} in {dist}')
-    fig4 = px.bar(new_df, x='Year', y=sector)
-    fig.update_traces(line_color='purple')
-    st.plotly_chart(fig, theme="streamlit", use_container_width=True)
-    st.plotly_chart(fig4, theme="streamlit", use_container_width=True)
+        fig4 = px.bar(new_df, x='Year', y=sector)
+        fig.update_traces(line_color='purple')
+        st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+        st.plotly_chart(fig4, theme="streamlit", use_container_width=True)
 
 
 with col1:

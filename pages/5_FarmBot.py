@@ -13,6 +13,21 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
+with open('pages/pages_StyleSheet.css') as pgdesign:
+    st.markdown(f"<style> {pgdesign.read()}</style>", unsafe_allow_html=True)
+animation_symbol = "❄"  # Load Animation
+st.markdown(
+    f"""
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.components.v1.html("""
 <!DOCTYPE html>
 <html>

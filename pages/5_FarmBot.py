@@ -106,13 +106,13 @@ if submit1:
 
 
     
-if st.session_state.counter >= 2:
+if len(st.session_state.prompt) >= 2:
         for i in range(len(st.session_state.prompt)):
             st.caption(f"{i} - Question and it's Response ")
             st.markdown(f"<h3>{st.session_state.prompt[i]}</h3>",unsafe_allow_html=True)
             st.markdown(f"<h7>{st.session_state.response[i]}</h7>",unsafe_allow_html=True)
             st.divider()
-if st.session_state.counter <= 1:
+if len(st.session_state.prompt) <= 1:
         for i in range(len(st.session_state.prompt)):
             st.caption(f"{i} - Question and it's Response ")
             st.markdown(f"<h3>{st.session_state.prompt[i]}</h3>",unsafe_allow_html=True)

@@ -121,11 +121,9 @@ parts = st.tabs(tabs=tabs)
 # section 1 and the question 1 part
 with parts[0]:
     q1, v1 = st.columns(2)
-
     with q1: 
         st.markdown("<h3>Navigate Yourself Properly Using This Video Here 👉</h3>",
                     unsafe_allow_html=True)
-
         st.markdown('')
         st.markdown("""<p> This is the main page which has two tabs in it. The first Tab provides a guide to the user for proper navigation throught the interface
                     the second Tab has the details of the Developers who worked on creation of this WebPage. Scroll Down to more about the intresting stuff that is Waiting For YOU! 😊
@@ -138,19 +136,16 @@ with parts[0]:
         welcome_bot = lottie_load_json(
             'pages/lottie_json/hello_bot.json')
         st_lottie.st_lottie(welcome_bot, quality='ultrahigh', width=250)
-
     with v1:
         with open("pages/media/homepage_vid//viz.mp4", 'rb') as v:
             st.video(v)
-
     st.write('---')
 
+
     q2, v2 = st.columns(2)
-
     with q2:
-        with open("pages/media/homepage_vid//viz.mp4", 'rb') as v:
+        with open("pages/media/homepage_vid/viz.mp4", 'rb') as v:
             st.video(v)
-
     with v2:
         st.markdown("<h3>Know The Current Trends In the Market Using Interactive Graphs 💹</h3>",
                     unsafe_allow_html=True)
@@ -164,8 +159,8 @@ with parts[0]:
         st.image("pages/media/images/Q1.png", width=250)
     st.markdown('---')
 
-    q3, v3 = st.columns(2)
 
+    q3, v3 = st.columns(2)
     with q3:
         st.markdown("<h3>Know What Crops You should Prefer Growing Based On Soil Nutrients!🌱</h3>",
                     unsafe_allow_html=True)
@@ -177,8 +172,9 @@ with parts[0]:
     with v3:
         with open("pages/media/homepage_vid/pred.mp4", 'rb') as v:
             st.video(v)
-
     st.markdown('---')
+
+
     q4, v4 = st.columns(2)
     with q4:
         with open("pages/media/homepage_vid/disease.mp4", 'rb') as v:
@@ -191,6 +187,21 @@ with parts[0]:
         pr = st.button('Upload pic and click 🍂')
         if pr:
             switch_page('Disease_Detection')
+    st.divider()
+
+    q5,v5 = st.columns(2)
+    with q5:
+        st.markdown("<h3>Your personal Assistant ask him anything 🤖</h3>",
+            unsafe_allow_html=True)
+        st.markdown("""<p>Select the language you want to chat with your bot and ask a query in any language you answer will be in the specified language 
+        by you. It provides stability and remove the language as a barrier for most of your tasks, and you can easily get your questions answerd within no time.</p>""", unsafe_allow_html=True)
+        bot = st.button('Chat with your bot...')
+        if bot:
+            switch_page("FarmBot")
+    with v5:
+        with open("pages/media/homepage_vid/farmbot.mp4",'rb') as video:
+            st.video(video)
+
 st_lottie.st_lottie(lottie_load_json(
     'pages/lottie_json//boygirl.json'))
 #        Welcome Tab Ends Here

@@ -59,28 +59,16 @@ def tips():
 
 
 
-# stable diffusion to generate V-1.5 image 
-
-def StableDiffusion(payload):
-    """
-    This is a stable diffusion API which will give user a chance to generate new images based there need 
-    """
-    Stable_API_URL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
-    Stable_headers = {"Authorization": "Bearer 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"}
-    response = requests.post(Stable_API_URL, headers=Stable_headers, json=payload)
-    return response.content
-
 #translation using google translation api 
 def translation(text,language):
-    """
-    Takes input a text and the language to convert into and return the given text converted into that specific language
-    """
+    """Takes input a text and the language to convert into and return the given text converted into that specific language"""
     lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','ଓଡିଆ':"odia",'English':'english'}
     language = lang_dict[language]
     translator = Translator()
     match language:
         case 'english':
-            return text 
+            output = translator.translate(text,dest='en')
+            return  output.text
         case 'hindi':
             # translating english to hindi  
             output = translator.translate(text, dest="hi")

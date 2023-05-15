@@ -4,3 +4,5 @@ virtualenv
 .gcloudignore 
 .env
 helper.cpython
+__pycache__
+.pyc

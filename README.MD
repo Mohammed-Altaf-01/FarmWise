@@ -60,6 +60,7 @@
 <img src="readme_media/pred.gif" style="width:100%;" >
 <img src="readme_media/viz.gif" style="width:100%;" >
 <img src="readme_media/disease.gif" style="width:100%;" >
+<img src="readme_media/farmbot.gif" style="width:100%;" >
 
 ---
 

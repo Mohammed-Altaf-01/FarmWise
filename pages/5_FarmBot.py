@@ -5,7 +5,7 @@ import time
 import streamlit as st
 
 st.set_page_config(
-    layout="wide", initial_sidebar_state="auto", page_icon="🤖")
+    layout="wide", initial_sidebar_state="collapsed", page_icon="🤖")
 hide_default_format = """
        <style>
        #MainMenu {visibility: hidden; }
@@ -94,7 +94,7 @@ if len(st.session_state.prompt)==0:
 col1,col2 = st.columns([2, 1]) 
 with col1:
     with st.form(key="my-form",clear_on_submit=True):
-        prompt = st.text_input("**Ask your Questions**",max_chars=85,placeholder="How can I keep my field always healthy..")
+        actual_prompt = st.text_input("**Ask your Questions**",max_chars=85,placeholder="How can I keep my field always healthy..")
         submit1 =  st.form_submit_button("**ASK**")
 with col2:
     with st.form(key="language-form"):
@@ -107,12 +107,13 @@ with col2:
 
 
 if submit1:
-    if PromptChecker(prompt):
-        response_prompt = prompt+" answer me in less than 200 words"
+    english_prompt = translation(actual_prompt,'English')
+    if PromptChecker(english_prompt):
+        response_prompt = english_prompt+" answer me in less than 200 words"
         response_prompt = Retreiving_Details(response_prompt)
         response_prompt=translation('{0}\n'.format(response_prompt[-1]['content'].strip()),language)
-        st.write(translation(response_prompt,language))
-        st.session_state.prompt.append(prompt)
+        st.write(response_prompt)
+        st.session_state.prompt.append(actual_prompt)
         st.session_state.response.append(response_prompt)
         
         st.divider()

@@ -107,7 +107,7 @@ st.markdown("If you want to upload image,click on Upload button below else Choos
 
 col1,col2 = st.columns(2)
 with col1:
-  saved_images = st.radio("**Select Type**",['Diseased Example','healthy Example','upload','Take a picture','Generate Image'],index=2,horizontal=True)
+  saved_images = st.radio("**Select Type**",['Diseased Example','healthy Example','upload','Take a picture'],index=2,horizontal=True)
 
   match saved_images: 
         case "upload":
@@ -123,24 +123,24 @@ with col1:
           image = col2.camera_input('click to take a picture of the leaf')
             
         case "Diseased Example":
-            image = "pages/media/images//apple_scab_disease.JPG"
+            image_selection = st.selectbox("select the images",["Scab","bacterial","Early Bright","Rust"])
+            if image_selection == "Scab":
+              image = "pages/media/images//apple_scab_disease.JPG"
+            elif image_selection == "bacterial":
+                image = "pages/media/images/disease_bacterial_spot.JPG"
+            elif image_selection == "Early Bright":
+                image = "pages/media/images/disease_early_blight.JPG"
+            elif image_selection == "Rust":
+                image = "pages/media/images/leaf_disease_rust.JPG"
             probability = prediction(Image.open(image))
+
         case "healthy Example":
-            image = "pages/media/images/healthy.JPG"
+            healthy_selection = st.selectbox("select the example",["healthy1","healthy2"])
+            if healthy_selection == "healthy1":
+              image = "pages/media/images/healthy.JPG"
+            elif healthy_selection == "healthy2":
+              image= "pages/media/images/healthy_2.JPG"
             probability = prediction(Image.open(image))
-        case "Generate Image":
-            prompt = st.text_input("write the description of the Disease!",max_chars=55,placeholder="Example Prompt -->  tomato leaf with black spots on it ")
-            if prompt and PromptChecker(prompt):
-              image_bytes = StableDiffusion({
-	              "inputs": prompt, 
-                      })
-              image = io.BytesIO(image_bytes)
-              probability = prediction(Image.open(image))
-            elif PromptChecker(prompt) == False:
-                st.warning("Please enter a proper prompt explaining your need!",icon="🛑")
-                image = None 
-            else:
-                image = None 
 
 
 with col2:
@@ -164,12 +164,13 @@ if image != None:  # another condition for pic
                 st.write(tips)
         else:
             lst = stripped.split(' ')
-            if len(lst) == 3 or len(lst) == 2:
-                text = f'Your crop might have a disease {lst[-1]}'
+            print(lst)
+            if len(lst) == 3 or len(lst) == 2 :
+                text = f'Your crop might have a disease {lst[-2]} {lst[-1]}'
                 st.write(translation(text,language_conversion))
-                val = f"disease {lst[-1]}"
+                val = f"disease {lst[-2]} {lst[-1]}"
 
-            elif len(lst) == 4:
+            elif len(lst) <= 5 :
                 text = f'Your crop might have a disease {lst[-3]} {lst[-2]} {lst[-1]}'
                 st.write(translation(text,language_conversion))
                 val = f"disease {lst[-3]} {lst[-2]} {lst[-1]}"

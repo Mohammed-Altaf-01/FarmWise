@@ -5,3 +5,5 @@ __pycache__
 .git
 .cpython
 virtualenv
+app.yaml
+Dockerfile

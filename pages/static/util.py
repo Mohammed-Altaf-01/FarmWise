@@ -1,4 +1,6 @@
 # third party imports 
+import speech_recognition as sr  
+import pyttsx3 
 import openai
 import streamlit as st
 from dotenv import load_dotenv
@@ -40,3 +42,35 @@ def Retreiving_Details(conversation):
     conversation.append(
         {'role': response.choices[0].message.role, 'content': response.choices[0].message.content})
     return conversation
+
+
+  
+def AudioInput(language):
+    lang_dict = {'हिंदी':'Hindi','ਪੰਜਾਬੀ':'Punjabi',"తెలుగు":'Telugu',"தமிழ்":"Tamil","اردو":'Urdu','English':'English'}
+    languages_key__dict = {'Hindi':"hi-IN",'Telugu':"te-IN","English":"en-IN","Tamil":"ta-IN","Punjabi":"pa-Guru-IN","Urdu":"ur-IN","Bengali":"bn-BD","Marathi":"mr-IN"}
+    speech_lang = lang_dict[language] #get specified language
+    speech_lang = languages_key__dict[speech_lang]  # get key for that language
+    r = sr.Recognizer() # initializing speech recognition class
+    with sr.Microphone() as source:
+        # seconds of non-speaking audio before 
+        # a phrase is considered complete
+        # replace with st.write and add translation with 'please start speaking !'
+        st.write(f"Please Speak in {lang_dict[language]}")
+        st.write("Listening....")
+        r.pause_threshold = 0.7  
+        # r.adjust_for_ambient_noise(source,duration=0.2)
+        audio = r.listen(source)  
+        try:
+            st.write("Processing")
+            Query = r.recognize_google(audio, language=speech_lang )
+        
+        # handling the exception, so that assistant can 
+        # ask for telling again the command
+        except Exception as e:
+            st.write("Say that again sir")
+            return "None"
+        return Query
+  
+  
+
+

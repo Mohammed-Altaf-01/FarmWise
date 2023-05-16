@@ -82,26 +82,39 @@ if 'response' not in st.session_state:
     st.session_state.response = []
 if "prompt" not in st.session_state:
     st.session_state.prompt = []
+if "language" not in st.session_state:
+    st.session_state.language = "English"
 
 
-def spinner():
-    with st.spinner('Calling Your 🤖 ...'):
-        time.sleep(2)
-if len(st.session_state.prompt)==0:
-    spinner()
-
+def AudioRecording():
+    st.write("Setting up features...Be Ready")
+    time.sleep(5)
+    query = AudioInput(st.session_state.language)
+    return query
+    
 
 col1,col2 = st.columns([2, 1]) 
-with col1:
-    with st.form(key="my-form",clear_on_submit=True):
-        actual_prompt = st.text_input("**Ask your Questions**",max_chars=85,placeholder="How can I keep my field always healthy..")
-        submit1 =  st.form_submit_button("**ASK**")
+format_input  = st.selectbox("select the type of format for Interaction..",("Typing","Speaking"))
+if format_input == "Typing":
+  with col1:
+        with st.form(key="typing-form",clear_on_submit=True):
+            actual_prompt = st.text_input("**Ask your Questions**",max_chars=85,placeholder="How can I keep my field always healthy..")
+            submit1 =  st.form_submit_button("**ASK**")
+elif format_input == "Speaking":
+     with col1:
+      submit1 = st.button("click to start ")
+      if submit1:
+        query = AudioRecording()
+        st.write("your question is shown below 👇")
+        st.markdown(f"<h3>{query}</h2>",unsafe_allow_html=True)
+        actual_prompt = query 
+
 with col2:
     with st.form(key="language-form"):
-        language = st.selectbox("Select Your Language",('English','हिंदी','తెలుగు','தமிழ்','ਪੰਜਾਬੀ','اردو',"ଓଡିଆ"))
+        language = st.selectbox("Select Your Language",('English','हिंदी','తెలుగు','தமிழ்','ਪੰਜਾਬੀ','اردو'))
+        st.session_state.language = language
         submit2 =  st.form_submit_button("**change language**")
         
-
 
 
 
@@ -111,7 +124,7 @@ if submit1:
     if PromptChecker(english_prompt):
         response_prompt = english_prompt+" answer me in less than 200 words"
         response_prompt = Retreiving_Details(response_prompt)
-        response_prompt=translation('{0}\n'.format(response_prompt[-1]['content'].strip()),language)
+        response_prompt=translation('{0}\n'.format(response_prompt[-1]['content'].strip()),st.session_state.language)
         st.write(response_prompt)
         st.session_state.prompt.append(actual_prompt)
         st.session_state.response.append(response_prompt)

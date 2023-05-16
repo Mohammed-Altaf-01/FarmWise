@@ -62,7 +62,7 @@ def tips():
 #translation using google translation api 
 def translation(text,language):
     """Takes input a text and the language to convert into and return the given text converted into that specific language"""
-    lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','ଓଡିଆ':"odia",'English':'english'}
+    lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','English':'english'}
     language = lang_dict[language]
     translator = Translator()
     match language:
@@ -101,7 +101,7 @@ def PromptChecker(prompt):
     
     """
     str = prompt.split(" ")
-    verification_list = ['buisness','want','agriculture','agricultural','tips','tricks','leaf','grow','plant','flower','crop','disease','unhealthy','spots','color','green','colour','healthy','feartelizer','farming','agriculture','agribussiness','potato','tomato','ladyfinger','garlic','root','Vegetable',"Ash gourd"	,'Broccoli','Cucumber','Celery','Bitter gourd','Greens',"Carrot",'Spring onions','Potato','Capsicum','Turnip','Brinjal''Tomato',	'Green peas',	'Ginger'	,'Apple gourd',
+    verification_list = ['describe','buisness','want','agriculture','agricultural','tips','tricks','leaf','grow','plant','flower','crop','disease','unhealthy','spots','color','green','colour','healthy','feartelizer','farming','agriculture','agribussiness','potato','tomato','ladyfinger','garlic','root','Vegetable',"Ash gourd"	,'Broccoli','Cucumber','Celery','Bitter gourd','Greens',"Carrot",'Spring onions','Potato','Capsicum','Turnip','Brinjal''Tomato',	'Green peas',	'Ginger'	,'Apple gourd',
                 'Onion',	'Cauliflower'	,'Beetroot'	,'Ridged gourd','Garlic',	'Cabbage' ,'Mushroom',"Lady's finger"	,'Snake gourd	','Ivy gourd', 'Scarlet gourd',	'Spinach',
                 'Beans','Lab labGreen papaya','Corn','Pumpkin'	,'Bottle gourd	','Snake beans' ,'Yard long beans',	'Okra','White pumpkin','Apple','Banana','Apricot',   'Atemoya ', ' Avocados',   'Blueberry ', ' Blackcurrant ',  'Ackee',   'Cranberry'  , 'Cantaloupe',   'Cherry'  , 'Black', 'sapote/Chocolate', 'pudding', 'fruit',   'Dragonrfruit'  , 'Dates'   ,'Cherimoya'  , "Buddha's hand", 'fruit ',  'Finger', 'Lime ',  'Fig'  , 'Coconut' ,
                'Cape', 'gooseberry','Inca', 'berry','Physalis ',  'Grapefruit'  , 'Gooseberries'  ,' Custard', 'apple/Sugar',  'Hazelnut'  , 'Honeyberries' ,  'Dragon', 'fruit ',  'Durian'   ,'Horned', 'Melon ' , 'Hog', 'Plum ',' Egg', 'fruit   Feijoa/Pineapple', 

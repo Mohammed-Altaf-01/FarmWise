@@ -94,21 +94,10 @@ def AudioRecording():
     
 
 col1,col2 = st.columns([2, 1]) 
-format_input  = st.selectbox("select the type of format for Interaction..",("Typing","Speaking"))
-if format_input == "Typing":
-  with col1:
+with col1:
         with st.form(key="typing-form",clear_on_submit=True):
             actual_prompt = st.text_input("**Ask your Questions**",max_chars=85,placeholder="How can I keep my field always healthy..")
             submit1 =  st.form_submit_button("**ASK**")
-elif format_input == "Speaking":
-     with col1:
-      submit1 = st.button("click to start ")
-      if submit1:
-        query = AudioRecording()
-        st.write("your question is shown below 👇")
-        st.markdown(f"<h3>{query}</h2>",unsafe_allow_html=True)
-        actual_prompt = query 
-
 with col2:
     with st.form(key="language-form"):
         language = st.selectbox("Select Your Language",('English','हिंदी','తెలుగు','தமிழ்','ਪੰਜਾਬੀ','اردو'))

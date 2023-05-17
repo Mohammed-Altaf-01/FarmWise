@@ -4,13 +4,13 @@ WORKDIR  /farmwise
 
 COPY requirements.txt ./requirements.txt
 
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip
 
-RUN pipwin install PyAudio==0.2.11
+RUN pip install -r requirements.txt
 
 EXPOSE 8501
 
-COPY . /farmwise
+COPY . ./
 
-CMD streamlit run --server.port 8501 --server.enableCORS false main.py
+CMD streamlit run --server.port=8501 --server.enableCORS false main.py
 

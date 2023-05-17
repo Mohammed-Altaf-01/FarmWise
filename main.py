@@ -126,7 +126,7 @@ with parts[0]:
                     unsafe_allow_html=True)
         st.markdown('')
         st.markdown("""<p> This is the main page which has two tabs in it. The first Tab provides a guide to the user for proper navigation throught the interface
-                    the second Tab has the details of the Developers who worked on creation of this WebPage. Scroll Down to more about the intresting stuff that is Waiting For YOU! 😊
+                    the second Tab has the details of the Developers who worked on creation of this WebPage. Scroll Down to know more about the intresting stuff that is Waiting For YOU! 😊
                         </p>""", unsafe_allow_html=True)
 
         Loved_it = st.button("Click To Chill ❄ ")
@@ -165,7 +165,7 @@ with parts[0]:
         st.markdown("<h3>Know What Crops You should Prefer Growing Based On Soil Nutrients!🌱</h3>",
                     unsafe_allow_html=True)
         st.markdown("""<p> Based On your current location and your state you can know what type of crop is most suitable for your area, and if by chance 
-        you wanna grow any other crop, simple name it and know what changes migh require to grow it in your filed without any effort🙅‍♂️</p>""", unsafe_allow_html=True)
+        you wanna grow any other crop, simple name it and know what changes migh require to grow it in your field without any effort🙅‍♂️</p>""", unsafe_allow_html=True)
         pr = st.button('GO Predict Without Trouble')
         if pr:
             switch_page('predictions')
@@ -182,8 +182,8 @@ with parts[0]:
     with v4:
         st.markdown("<h3>Know What disease your crops have with just a pic 📸</h3>",
                     unsafe_allow_html=True)
-        st.markdown("""<p>choose if you want to upload the picture or take a picture using the front camera then, click the button and wait for the suggesions
-        the probability is very high in this suggesion, create your way further based on these suggesions.</p>""", unsafe_allow_html=True)
+        st.markdown("""<p>choose if you want to upload the picture or take a picture using the front camera or checkout the sample images then, click the button and wait for the suggesions
+        the output is provided based on the highest probability of a disease in the leaf, create your way further based on these suggesions. Last but not least choose your language to read them perfectly</p>""", unsafe_allow_html=True)
         pr = st.button('Upload pic and click 🍂')
         if pr:
             switch_page('Disease_Detection')

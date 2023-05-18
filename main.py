@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
 import streamlit_lottie as st_lottie
 from streamlit_extras.switch_page_button import switch_page
 from pages.static.util import *
@@ -105,6 +106,8 @@ st.markdown(
     <div class="snowflake">{animation_symbol}</div>
     <div class="snowflake">{animation_symbol}</div>
     <div class="snowflake">{animation_symbol}</div>
+    <div class="snowflake">{animation_symbol}</div>
+
 
     """,
     unsafe_allow_html=True,
@@ -115,11 +118,18 @@ st.markdown(
 
 
 # creating The tabs section for mainpage
-tabs = ["Welcome", '***Developer***']
-parts = st.tabs(tabs=tabs)
+selected = option_menu(None, ["Home", "About Us"], 
+    icons=['house', "list-task"], 
+    menu_icon="cast", default_index=0, orientation="horizontal",
+    styles={
 
+        "icon": {"color": "green", "font-size": "5px"}, 
+        "nav-link": {"font-size": "25px", "text-align": "center", "margin":"0px", "--hover-color": "#90EE90"},
+        "nav-link-selected": {"background-color": "#171818"},
+    }
+)
 # section 1 and the question 1 part
-with parts[0]:
+if selected == "Home":
     q1, v1 = st.columns(2)
     with q1: 
         st.markdown("<h3>Navigate Yourself Properly Using This Video Here 👉</h3>",
@@ -202,13 +212,11 @@ with parts[0]:
         with open("pages/media/homepage_vid/farmbot.mp4",'rb') as video:
             st.video(video)
 
-st_lottie.st_lottie(lottie_load_json(
-    'pages/lottie_json//boygirl.json'))
 #        Welcome Tab Ends Here
 
 
-with parts[1]:
-    st.markdown('Mohit Goud and Mohammed Altaf')
+if selected == "About Us":
+    st.markdown('**Mohit Goud and Mohammed Altaf**')
     st.markdown(
         'The Developers of This app belongs to Anurag University, Currently Pursuing there Third Year.   '
         "    From The Department of Mechanical Engineering! Curious Enthusiast's Wanna Do Something useful for the Society")
@@ -219,26 +227,31 @@ with parts[1]:
         # crating and adding github logo
         logo = lottie_load_json('pages/lottie_json/github.json')
         st_lottie.st_lottie(
-            logo, loop=True, quality="high", width=90
+            logo, loop=True, quality="high", width=350
         )
         st.markdown(
             '[Code!!](https://github.com/Mohammed-Altaf-01/gfg_hackathon-)')
     with co2:
         mail_logo = lottie_load_json('pages/lottie_json/gmail.json')
-        st_lottie.st_lottie(mail_logo, loop=True, quality='high', width=90)
-        mail_link = '<a href="mailto:20eg103319@anurag.edu.in">ClickHere</a>'
+        st_lottie.st_lottie(mail_logo, loop=True, quality='high', width=280)
+        mail_link = '<a href="mailto:20eg103319@anurag.edu.in" align :left>ClickHere</a>'
         st.markdown(mail_link, unsafe_allow_html=True)
 
     with co3:
         twitter_logo = lottie_load_json("pages/lottie_json//twitter.json")
-        st_lottie.st_lottie(twitter_logo, loop=True, quality='high', width=100)
+        st_lottie.st_lottie(twitter_logo, loop=True, quality='high', width=300)
         st.markdown('[Tweet!!](https://twitter.com/_MohammedAltaf)')
 
     with co4:
         linkedln_logo = lottie_load_json('pages/lottie_json/linkedin.json')
-        st_lottie.st_lottie(linkedln_logo, loop=True, width=100)
+        st_lottie.st_lottie(linkedln_logo, loop=True, width=350)
         st.markdown(
             '[Post](https://www.linkedin.com/in/mohammed-altaf-850b56259/)')
 
     st.markdown('---')
     st.caption('𝒜 𝒮𝒾𝓂𝓅𝓁𝑒  𝐵𝑜𝑜𝓈𝓉  𝒯𝑜   𝒪𝓊𝓇   𝐼𝓂𝒶𝑔𝒾𝓃𝒶𝓉𝒾𝑜𝓃')
+
+
+
+st_lottie.st_lottie(lottie_load_json(
+    'pages/lottie_json//boygirl.json'))

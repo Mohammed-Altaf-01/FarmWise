@@ -30,7 +30,7 @@ def Retreiving_Details(conversation):
     question = []
     question.append({'role': 'system','content':conversation })
     conversation = question
-    apikey =  os.getenv("API_KEY") or st.secrets["API_KEY"] 
+    apikey =   st.secrets["API_KEY"] 
     openai.api_key = apikey
     model = 'gpt-3.5-turbo'
     response = openai.ChatCompletion.create(

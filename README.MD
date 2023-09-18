@@ -71,7 +71,7 @@
   ```
 - And finally run the project with
   ```
-  streamlit run  Homepage.py
+  streamlit run  ./main.py
   ```
 - Open the localhost url provided after running `main.py` and now you can use the project locally in your web browser.
 

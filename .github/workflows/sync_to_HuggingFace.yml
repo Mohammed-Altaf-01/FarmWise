@@ -2,6 +2,11 @@ name: Sync to Hugging Face hub
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '.dockerignore'
+      - '.gcloudignore'
+      - 'app.yaml'
+      - '**/readme_media/**' 
 
   # to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,4 +22,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://Mohammed-Altaf:$HF_TOKEN@huggingface.co/spaces/Mohammed-Altaf/Farmwise main
+        run: git lfs push --force https://Mohammed-Altaf:$HF_TOKEN@huggingface.co/spaces/Mohammed-Altaf/Farmwise main

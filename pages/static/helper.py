@@ -27,9 +27,7 @@ def prediction(image):
     test_image = test_image/255.0
     test_image = np.expand_dims(test_image, axis=0)
     prediction = classifier.predict(test_image)
-    labels = ['Tomato___Late_blight', 'Tomato___healthy', 'Grape___healthy', 'Orange___Haunglongbing_(Citrus_greening)', 'Soybean___healthy', 'Squash___Powdery_mildew', 'Potato___healthy', 'Corn_(maize)___Northern_Leaf_Blight', 'Tomato___Early_blight', 'Tomato___Septoria_leaf_spot', 'Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot', 'Strawberry___Leaf_scorch', 'Peach___healthy', 'Apple___Apple_scab', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus', 'Tomato___Bacterial_spot', 'Apple___Black_rot', 'Blueberry___healthy', 'Cherry_(including_sour)___Powdery_mildew',
-              'Peach___Bacterial_spot', 'Apple___Cedar_apple_rust', 'Tomato___Target_Spot', 'Pepper,_bell___healthy', 'Grape___Leaf_blight_(Isariopsis_Leaf_Spot)', 'Potato___Late_blight', 'Tomato___Tomato_mosaic_virus', 'Strawberry___healthy', 'Apple___healthy', 'Grape___Black_rot', 'Potato___Early_blight', 'Cherry_(including_sour)___healthy', 'Corn_(maize)___Common_rust_', 'Grape___Esca_(Black_Measles)', 'Raspberry___healthy', 'Tomato___Leaf_Mold', 'Tomato___Spider_mites Two-spotted_spider_mite', 'Pepper,_bell___Bacterial_spot', 'Corn_(maize)___healthy']
-    return np.argmax(prediction[0])  # labels[np.argmax(prediction[0])]
+    return np.argmax(prediction[0])  
 
 
 @st.cache_data
@@ -62,6 +60,7 @@ def tips():
 #translation using google translation api 
 def translation(text,language):
     """Takes input a text and the language to convert into and return the given text converted into that specific language"""
+
     lang_dict = {'हिंदी':'hindi','ਪੰਜਾਬੀ':'punjabi',"తెలుగు":'telugu',"தமிழ்":"tamil","اردو":'urdu','English':'english'}
     language = lang_dict[language]
     translator = Translator()
@@ -97,7 +96,7 @@ def translation(text,language):
 
 def PromptChecker(prompt):
     """
-    takes in a prompt or a statement and checeks weather it include agriculture and farm related statements or not 
+    takes in a prompt or a statement and checks weather it include agriculture and farm related statements or not 
     
     """
     str = prompt.split(" ")

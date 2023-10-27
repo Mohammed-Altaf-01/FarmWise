@@ -4,6 +4,8 @@ import plotly.express as px
 import numpy as np
 import time 
 import plotly.graph_objects as go
+
+
 st.set_page_config(
     layout="wide", initial_sidebar_state="auto", page_icon="📽")
 
@@ -98,17 +100,17 @@ st.components.v1.html("""
 </html>
 """)
 
+# <------ Reading Datasets ------->
 
-# 3 datasets for graphs
 df_gdp = pd.read_csv('pages/datasets/GDP.csv')
 df_prices = pd.read_csv('pages/datasets/Prices.csv')
 df_yield = pd.read_csv('pages/datasets//raw_districtwise_yield_data.csv')
 df_gdp_columns = df_gdp.columns
 df_price_columns = df_prices.columns
-
-
 st.write('---')
-# dividing and working with columns on our page
+
+
+# <------ Plotting The Graphs ------->
 col1, col2 = st.columns([2,2])
 with col2:
 
@@ -149,16 +151,4 @@ with col1:
     st.plotly_chart(fig2, theme="streamlit", use_container_width=True)
     st.plotly_chart(fig3, theme="streamlit", use_container_width=True)
 
-# figures end here
 
-
-# creating map using stereamlit
-
-# df_map = pd.read_excel('pages//altitude.xlsx')
-# fig_map = px.scatter_mapbox(
-#     df_map, lat="Latitude", lon="Longitude", color_discrete_sequence=["fuchsia"], zoom=3, height=500)
-
-
-# fig_map.update_layout(mapbox_style="open-street-map")
-# fig_map.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-# st.plotly_chart(fig_map, theme='streamlit', use_container_width=True)

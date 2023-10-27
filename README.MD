@@ -1,10 +1,16 @@
+""""
+title: Farmwise
+emoji: 🌿
+sdk: streamlit
+sdk_version: 1.22.0
+app_file: main.py
+pinned:True
+""""
+
 # Farm Wise 🌿
 
 #### A compact website build on various factors,addressing issues of farmers regarding their crops, this website has three main parts.The first part being a **_visualization_** playground. Where trends according to the market can be seen, second being **_prediction_** where depending upon various factors of soil quality one can predict the type of crop he could grow. One cache if the person wanna grow another crop based on the same nutrients he can know what changes are required. Last one being **_Classification_**, in this page users are required to either click on image or upload an image of the leaf or plant whichever is possible to know what disease one's field is having.
 
-#### [Access the app deployed on google cloud here](https://farmwise-qu362vvgoa-el.a.run.app/)
-
-#### [Access the app deployed on Streamlit cloud here](https://farmwise0.streamlit.app/)
 
 ## DISCLAIMER ⚠️
 

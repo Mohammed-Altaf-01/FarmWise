@@ -24,4 +24,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git lfs push --force https://Mohammed-Altaf:$HF_TOKEN@huggingface.co/spaces/Mohammed-Altaf/Farmwise main
+        run: git lfs push https://Mohammed-Altaf:$HF_TOKEN@huggingface.co/spaces/Mohammed-Altaf/Farmwise main

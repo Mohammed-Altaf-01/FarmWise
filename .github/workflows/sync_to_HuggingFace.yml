@@ -7,6 +7,8 @@ on:
       - '.gcloudignore'
       - 'app.yaml'
       - '**/readme_media/**' 
+      - 'README.MD'
+      - '**/venv/**'
 
   # to run this workflow manually from the Actions tab
   workflow_dispatch:

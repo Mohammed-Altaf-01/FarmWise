@@ -51,14 +51,7 @@ pinned:True
 
 - _visualization_: At first there might note seem any importance for this. But in the current era, always being up-to-date is important. What's working? and what's not actually working?, is the question that can be solved with this page. Across various sectors and various types of crops distribution is shown in various Indian states.
 
-- _Image Classification System_: The user can upload an image in this or either take a clear picture with less stuff placed in the background for clear prediction. CNN has been trained on few thousand of images with logs as shown below:
-
----
-
-<img src="pages/media/images/loss.jpg" style="width:100%;" >
-<img src="pages/media/images/accuracy.jpg"style="width:100%;">
-
----
+- _Image Classification System_: The user can upload an image in this or either take a clear picture with less stuff placed in the background for clear prediction. CNN has been trained on few thousand of images
 
 ## Below are Few working videos of our WebAPP
 
@@ -84,7 +77,7 @@ pinned:True
   ```
 - And finally run the project with
   ```
-  streamlit run  Homepage.py
+  streamlit run  ./main.py
   ```
 - Open the localhost url provided after running `main.py` and now you can use the project locally in your web browser.
 

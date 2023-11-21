@@ -1,3 +1,7 @@
+# FarmWise
+* It is a Proof of Concept which explains how the latest Technologies like Artifical Intelligence and Machine learning could leverage the agricultural Sector.
+* The app is deployed currently on hugging face sapces [link](https://huggingface.co/spaces/Mohammed-Altaf/Farmwise) only beacuse GCP credits are expired
+* The **microsoft/swin-tiny-patch4-window7-224** is the model which was used to fine tune on custom Image dataset which I have.
 #### A compact website build on various factors,addressing issues of farmers regarding their crops, this website has three main parts.The first part being a **_visualization_** playground. Where trends according to the market can be seen, second being **_prediction_** where depending upon various factors of soil quality one can predict the type of crop he could grow. One cache if the person wanna grow another crop based on the same nutrients he can know what changes are required. Last one being **_Classification_**, in this page users are required to either click on image or upload an image of the leaf or plant whichever is possible to know what disease one's field is having.
 
 

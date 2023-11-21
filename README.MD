@@ -1,15 +1,3 @@
-metadata
-title: Farmwise
-emoji: 👁
-colorFrom: indigo
-colorTo: gray
-sdk: streamlit
-sdk_version: 1.28.0
-app_file: app.py
-pinned: false
-license: c
-# Farm Wise 🌿
-
 #### A compact website build on various factors,addressing issues of farmers regarding their crops, this website has three main parts.The first part being a **_visualization_** playground. Where trends according to the market can be seen, second being **_prediction_** where depending upon various factors of soil quality one can predict the type of crop he could grow. One cache if the person wanna grow another crop based on the same nutrients he can know what changes are required. Last one being **_Classification_**, in this page users are required to either click on image or upload an image of the leaf or plant whichever is possible to know what disease one's field is having.
 
 
